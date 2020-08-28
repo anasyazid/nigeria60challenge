@@ -75,7 +75,9 @@
                 <a class="nav-link" href="/#faq"> FAQ </a>
               </li>
             </ul>
-            <a href="apply.html" class="btn btn-common-white desktop">Apply Now</a>
+            <a href="apply.html" class="btn btn-common-white desktop"
+              >Apply Now</a
+            >
           </div>
         </div>
       </nav>
@@ -93,45 +95,69 @@
         </div>
 
         <div>
-          <div class="row py-4">
+          <div class="row pt-4">
             <div
               class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center"
             >
               <img class="vote-logo" src="./assets/img/coa.png" alt="" />
-              <a href="#" class="btn btn-common mt-4 mb-2"
-                >Vote this logo</a
-              >
-              <p class="mb-5 pointer text-underline">Read the Design Rationale</p>
+              <a href="#" class="btn btn-common mt-4 mb-2">Vote this logo</a>
+              <p class="mb-2 pointer text-underline">
+                Read the Design Rationale
+              </p>
+
+              <div class="mb-2 myProgress">
+                <div id="myBar"></div>
+              </div>
+              <p class="mb-5"><b>200 Votes</b></p>
             </div>
             <div
               class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center"
             >
               <img class="vote-logo" src="./assets/img/coa.png" alt="" />
-              <a href="#" class="btn btn-border mt-4 mb-2"
-                >Logo Selected</a
-              >
-              <p class="mb-5 pointer text-underline">Read the Design Rationale</p>
+              <a href="#" class="btn btn-border mt-4 mb-2">Logo Selected</a>
+              <p class="mb-2 pointer text-underline">
+                Read the Design Rationale
+              </p>
+
+              <div class="mb-2 myProgress">
+                <div id="myBar1"></div>
+              </div>
+              <p class="mb-5"><b>200 Votes</b></p>
             </div>
             <div
               class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center"
             >
               <img class="vote-logo" src="./assets/img/coa.png" alt="" />
 
-              <a href="#" class="btn btn-common mt-4 mb-2"
-                >Vote this logo</a
-              >
-              <p class="mb-5 pointer text-underline">Read the Design Rationale</p>
-              
+              <a href="#" class="btn btn-common mt-4 mb-2">Vote this logo</a>
+              <p class="mb-2 pointer text-underline">
+                Read the Design Rationale
+              </p>
+
+              <div class="mb-2 myProgress">
+                <div id="myBar2"></div>
+              </div>
+              <p class="mb-5"><b>200 Votes</b></p>
             </div>
             <div
               class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center"
             >
               <img class="vote-logo" src="./assets/img/coa.png" alt="" />
-              <a href="#" class="btn btn-common mt-4 mb-2"
-                >Vote this logo</a
-              >
-              <p class="mb-5 pointer text-underline">Read the Design Rationale</p>
+              <a href="#" class="btn btn-common mt-4 mb-2">Vote this logo</a>
+              <p class="mb-2 pointer text-underline">
+                Read the Design Rationale
+              </p>
+
+              <div class="mb-2 myProgress">
+                <div id="myBar3"></div>
+              </div>
+              <p class="mb-5"><b>200 Votes</b></p>
             </div>
+          </div>
+
+          <div class="text-center">
+            <p class="text-green">Total Vote count</p>
+            <h3>3,090</h3>
           </div>
 
           <div class="mt-4">
@@ -161,7 +187,6 @@
               </div>
             </div>
           </div>
-          
         </div>
       </div>
     </div>
@@ -180,12 +205,14 @@
         <div class="modal-content">
           <div class="modal-body">
             <p class="text-center">
-                Thank you for voting. <br>
-                <b>Your vote has been recorded.</b>
+              Thank you for voting. <br />
+              <b>Your vote has been recorded.</b>
             </p>
           </div>
           <div class="modal-footer d-flex flex-row justify-content-center">
-            <button type="button" class="btn btn-common">View Current Results</button>
+            <button type="button" class="btn btn-common">
+              View Current Results
+            </button>
           </div>
         </div>
       </div>
@@ -299,6 +326,65 @@
       $("#myModal").on("shown.bs.modal", function () {
         $("#myInput").trigger("focus");
       });
+    </script>
+
+    <!-- PROGRESS STYLE AND SCRIPT -->
+
+    <style>
+      .myProgress {
+        width: 100%;
+        background-color: #00583550;
+        margin: 0 5px;
+        border-radius: 5px;
+      }
+
+      #myBar {
+        width: 30%;
+        height: 10px;
+        background-color: #005835;
+        border-radius: 5px;
+      }
+      #myBar1 {
+        width: 30%;
+        height: 10px;
+        background-color: #005835;
+        border-radius: 5px;
+      }
+      #myBar2 {
+        width: 30%;
+        height: 10px;
+        background-color: #005835;
+        border-radius: 5px;
+      }
+      #myBar3 {
+        width: 30%;
+        height: 10px;
+        background-color: #005835;
+        border-radius: 5px;
+      }
+    </style>
+
+    <script>
+      
+      function move() {
+        
+          var elem = document.getElementById("myBar");
+          var elem1 = document.getElementById("myBar1");
+          var elem2 = document.getElementById("myBar2");
+          var elem3 = document.getElementById("myBar3");
+          var width = 30;
+          var width1 = 20;
+          var width2 = 50;
+          var width3 = 10;
+          var id = setInterval(frame, 10);
+          function frame() {
+              elem.style.width = width + "%";
+              elem1.style.width = width1 + "%";
+              elem2.style.width = width2 + "%";
+              elem3.style.width = width3 + "%";
+            }
+          }
+      window.onload=move();
     </script>
   </body>
 </html>
