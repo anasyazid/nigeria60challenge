@@ -1981,6 +1981,11 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
   margin-top: 200px;
 }
 
+.modal-wide{
+  max-width: none;
+  margin: 60px 3%;
+}
+
 .text-underline{
   text-decoration: underline;
 }
