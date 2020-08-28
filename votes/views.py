@@ -22,5 +22,5 @@ class Poll(APIView):
 
     def get(self, request):
         poll = Vote.objects.values('design_id').annotate(votes=Count('design_id')).order_by('votes')
-        print(poll)
+        # ttodo: return json of vootes
         return JsonResponse({"poll": "Compleeted"})

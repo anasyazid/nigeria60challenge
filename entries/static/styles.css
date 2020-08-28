@@ -15,7 +15,7 @@ body {
     backface-visibility: hidden;
     overflow-x: hidden;
     padding: 20px;
-    background-image: url(./assets/hero-area.svg);
+    background-image: url(./images/hero-area.svg);
   }
 
   b{
