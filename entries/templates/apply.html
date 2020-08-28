@@ -1,0 +1,149 @@
+{% extends 'index.html' %}
+{% block header %} {% endblock %}
+{% block body %}
+    <!-- Hero Area Start -->
+    <div id="hero-area" class="hero-area-bg">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">
+                    Bio Data
+                </h2>
+                <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
+            </div>
+            <div>
+                <div>
+                    <p class="text-green">Are you applying as a team ?</p>
+                    <label class="radio-container">
+                        <p class="check-label">Yes</p>
+                        <input type="radio" checked="checked" name="team" value="yes"/>
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="radio-container">
+                        <p class="check-label">No</p>
+                        <input type="radio" name="team" value="no"/>
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+
+                <div class="mt-4">
+                    <p class="text-green">Kindly provide the name of other members</p>
+                    <div>
+                        <div class="row">
+                            <div class="mt-4 col-sm-6">
+                                <input placeholder="Member Name" type="text" required=""/>
+                            </div>
+                            <div class="mt-4 col-sm-6">
+                                <input placeholder="Member Name" type="text" required=""/>
+                            </div>
+                        </div>
+                        <div class="pointer add mt-3">
+                            <i class="lni-plus"></i> Add Member
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <p class="text-green">Details of Lead Applicant</p>
+                    <div>
+                        <div class="row">
+                            <div class="mt-4 col-sm-6">
+                                <input placeholder="Full Name*" type="text" required=""/>
+                            </div>
+                            <div class="mt-4 col-sm-6">
+                                <input placeholder="Phone Number*" type="tel" required=""/>
+                            </div>
+                            <div class="mt-4 col-sm-6">
+                                <input placeholder="Email*" type="email" required=""/>
+                            </div>
+                            <div class="mt-4 col-sm-6 relative">
+                                <select class="select-css pointer">
+                                    <option>State of Origin*</option>
+                                    <option>Apples</option>
+                                    <option>Bananas</option>
+                                    <option>Grapes</option>
+                                    <option>Oranges</option>
+                                </select>
+                                <i class="lni-chevron-down drop-down"></i>
+                            </div>
+                            <div class="mt-4 col-sm-6">
+                                <input placeholder="Age*" type="number" required=""/>
+                            </div>
+                            <div class="mt-4 col-sm-12">
+                                <input placeholder="Contact Address*" type="text" required=""/>
+                            </div>
+                            <div class="mt-4 col-sm-6 relative">
+                                <select class="select-css pointer">
+                                    <option>Type of ID*</option>
+                                    <option>Apples</option>
+                                    <option>Bananas</option>
+                                    <option>Grapes</option>
+                                    <option>Oranges</option>
+                                </select>
+                                <i class="lni-chevron-down drop-down"></i>
+                            </div>
+                            <div class="mt-4 col-sm-6">
+                                <input placeholder="ID Number*" type="text" required=""/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-5 d-flex justify-content-center">
+                        <div>
+                            <a href="./apply2.html" class="btn btn-common">Next <i
+                                    class="lni-chevron-right ml-2 mt-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero Area End -->
+{% endblock %}
+
+{% block customjs %}
+    <script>
+        new TimezZ("#timer", {
+            date: "Oct 1, 2020",
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#announcement").nivoLightbox();
+        });
+    </script>
+    <script>
+        (function () {
+            "use strict";
+
+            // define variables
+            var items = document.querySelectorAll(".timeline li");
+
+            // check if an element is in viewport
+            // http://stackoverflow.com/questions/123999/how-to-tell-if-a-dom-element-is-visible-in-the-current-viewport
+            function isElementInViewport(el) {
+                var rect = el.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <=
+                    (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <=
+                    (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+
+            function callbackFunc() {
+                for (var i = 0; i < items.length; i++) {
+                    if (isElementInViewport(items[i])) {
+                        items[i].classList.add("in-view");
+                    }
+                }
+            }
+
+            // listen for events
+            window.addEventListener("load", callbackFunc);
+            window.addEventListener("resize", callbackFunc);
+            window.addEventListener("scroll", callbackFunc);
+        })();
+    </script>
+{% endblock customjs %}

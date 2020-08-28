@@ -2,13 +2,19 @@ from django.db import models
 
 
 class Person(models.Model):
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
+    fullname = models.CharField(max_length=255)
+    phone_number = models.CharField(max_length=255)
     email = models.CharField(max_length=255, unique=True)
     state_of_origin = models.CharField(max_length=255)
+    age = models.PositiveSmallIntegerField()
     contact_address = models.TextField()
     id_type = models.CharField(max_length=255)
     id_number = models.CharField(max_length=255, unique=True)
+
+
+class TeamMate(models.Model):
+    person = models.ForeignKey(Person, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
 
 
 class Entry(models.Model):

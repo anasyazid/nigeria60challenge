@@ -1,9 +1,15 @@
-from django.http import JsonResponse
-from django.views.generic import ListView
+from django.views.generic import ListView, FormView
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
+from .forms import EntrySubmissionForm
 from .models import Entry
 from .serializers import EntrySerializer
+
+
+class EntrySubmission(FormView):
+    model = Entry
+    form_class = EntrySubmissionForm
+    template_name = 'apply.html'
 
 
 class ListCreateEntries(ListCreateAPIView):
@@ -27,5 +33,4 @@ class EntryDetailView(RetrieveUpdateDestroyAPIView):
 class EntryExportView(ListView):
     model = Entry
     queryset = Entry.objects.all()
-    template_name = 'index.html'
-
+    template_name = 'export.html'
