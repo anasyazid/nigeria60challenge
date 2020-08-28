@@ -65,7 +65,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="/#pricing"> The Prizes </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item active">
                 <a class="nav-link" href="/#criteria"> Vote </a>
               </li>
               <li class="nav-item">
@@ -75,7 +75,7 @@
                 <a class="nav-link" href="/#faq"> FAQ </a>
               </li>
             </ul>
-            <a href="#" class="btn btn-common-white desktop">Apply Now</a>
+            <a href="apply.html" class="btn btn-common-white desktop">Apply Now</a>
           </div>
         </div>
       </nav>
@@ -87,121 +87,109 @@
       <div class="container">
         <div class="section-header">
           <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">
-            Challenge Submission
+            Vote Nigeria@60 Brand
           </h2>
           <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
         </div>
 
         <div>
-          <div class="mt-4">
-            <p class="text-green">What challenge are you submitting for?</p>
-            <div class="ml-0 mt-4 col-sm-6 pl-0 relative">
-              <select class="select-css pointer">
-                <option>Select Challenge*</option>
-                <option>Poetry</option>
-                <option>Slogan</option>
-                <option>Photography</option>
-              </select>
-              <i class="lni-chevron-down drop-down"></i>
-            </div>
-          </div>
-
-          <div class="mt-4">
-            <div class="mt-4">
-              <input placeholder="Enter slogan here*" type="text" required="" />
-            </div>
-          </div>
-
-          <div class="mt-4">
-            <div class="mt-4">
-              <input placeholder="Enter Poem*" type="text" required="" />
-            </div>
-
-            <div class="mt-4">
-              <input
-                placeholder="Enter Url to your video here*"
-                type="url"
-                required=""
-              />
-            </div>
-          </div>
-
-          <div class="mt-4">
-            <p class="text-green">
-              Upload your pictures *Maximum of 3 & in .jpg or .png format
-            </p>
-            <form
-              action="https://yqyhnrp1m1.execute-api.us-east-1.amazonaws.com/dev/labourer-pic/"
-              class="dropzone"
+          <div class="row py-4">
+            <div
+              class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center"
             >
-              <div class="fallback">
-                <input name="avatar" type="file" multiple />
-              </div>
-            </form>
-          </div>
+              <img class="vote-logo" src="./assets/img/coa.png" alt="" />
+              <a href="#" class="btn btn-common mt-4 mb-2"
+                >Vote this logo</a
+              >
+              <p class="mb-5 pointer text-underline">Read the Design Rationale</p>
+            </div>
+            <div
+              class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center"
+            >
+              <img class="vote-logo" src="./assets/img/coa.png" alt="" />
+              <a href="#" class="btn btn-border mt-4 mb-2"
+                >Logo Selected</a
+              >
+              <p class="mb-5 pointer text-underline">Read the Design Rationale</p>
+            </div>
+            <div
+              class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center"
+            >
+              <img class="vote-logo" src="./assets/img/coa.png" alt="" />
 
-          <div class="mt-4">
-            <div>
-              <label class="check-container">
-                I consent to the use of my submissions by the Federal Republic
-                of Nigeria towards the celebration of Nigeria @60
-                <input
-                  type="checkbox"
-                  checked="checked"
-                  name="team"
-                  value="yes"
-                />
-                <span class="checkmark-2"></span>
-              </label>
+              <a href="#" class="btn btn-common mt-4 mb-2"
+                >Vote this logo</a
+              >
+              <p class="mb-5 pointer text-underline">Read the Design Rationale</p>
+              
+            </div>
+            <div
+              class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center"
+            >
+              <img class="vote-logo" src="./assets/img/coa.png" alt="" />
+              <a href="#" class="btn btn-common mt-4 mb-2"
+                >Vote this logo</a
+              >
+              <p class="mb-5 pointer text-underline">Read the Design Rationale</p>
             </div>
           </div>
 
           <div class="mt-4">
-            <p class="text-green">Photography - criteria & guide</p>
-            <p>
-              1- The four word slogan challenge requires you to provide a four
-              word slogan fitting the theme of the Nigeria @ 60 Challenge
-              “Beauty and Ecellence”<br />
-              2- The slogan will be used in any communication material throught
-              the year.<br />
-              3- The top three slogans will win a prize<br />
-            </p>
+            <div class="mt-4">
+              <input placeholder="Full Name*" type="text" required="" />
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <div class="mt-4">
+              <input placeholder="Phone Number*" type="text" required="" />
+            </div>
           </div>
 
           <div class="mt-4">
             <div class="mt-5 d-flex justify-content-between">
               <div>
-                <a href="./apply.html" class="btn btn-border">
-                  <i class="lni-chevron-left mr-2 mt-1"></i> back</a
+                <a
+                  href="#"
+                  class="btn btn-common"
+                  data-toggle="modal"
+                  data-target="#exampleModal"
                 >
-              </div>
-              <div>
-                <a href="./apply2.html" class="btn btn-common" data-toggle="modal" data-target="#exampleModal">Submit</a>
+                  <i class="lni-facebook mr-2 mt-1"></i> Sign In to Complete
+                  vote</a
+                >
               </div>
             </div>
           </div>
+          
         </div>
       </div>
     </div>
     <!-- Hero Area End -->
 
     <!-- Button trigger modal -->
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-       
-        <div class="modal-body">
-           <p> Please confirm all information entered are correct.<br>
-            <b>You can’t edit your entry after submission.</b></p>
-        </div>
-        <div class="modal-footer d-flex flex-row justify-content-between">
-          <button type="button" class="btn btn-border" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-common">Confirm Submission</button>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <p class="text-center">
+                Thank you for voting. <br>
+                <b>Your vote has been recorded.</b>
+            </p>
+          </div>
+          <div class="modal-footer d-flex flex-row justify-content-center">
+            <button type="button" class="btn btn-common">View Current Results</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
     <!-- Footer Section Start -->
     <footer id="footer" class="footer-area section-padding hero-area">
