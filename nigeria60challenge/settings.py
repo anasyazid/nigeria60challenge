@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 
 import dj_database_url
+import django_heroku
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -78,7 +79,7 @@ WSGI_APPLICATION = 'nigeria60challenge.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-if IS_PRODUCTION:
+if IS_PRODUCTION and False:
     DATABASES = {'default': dj_database_url.config()}
 else:
     DATABASES = {
@@ -133,4 +134,5 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# django_heroku.settings(locals())
