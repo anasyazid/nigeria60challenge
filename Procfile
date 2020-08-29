@@ -1,1 +1,1 @@
-web: gunicorn naija60challenge.wsgi --log-file -
+web: gunicorn nigeria60challenge.wsgi --log-file -
