@@ -1,9 +1,23 @@
 from django.db.models import Count
 from django.http import JsonResponse
+from django.views.generic import FormView, CreateView
 from rest_framework.generics import ListCreateAPIView
 from rest_framework.views import APIView
 
+from .forms import VotingForm
 from .models import Vote
+
+
+class VotingView(CreateView):
+    form_class = VotingForm
+    template_name = 'vote.html'
+    success_url = '/polls/view'
+
+    def get_context_data(self, **kwargs):
+        data = super(VotingView, self).get_context_data(**kwargs)
+        data['polls'] = Vote.objects.values('design_id').annotate(votes=Count('design_id')).order_by('votes')
+        data['vote_count'] = Vote.objects.values('design_id').count()
+        return data
 
 
 class ListCreateVote(ListCreateAPIView):

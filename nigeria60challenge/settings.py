@@ -27,7 +27,7 @@ SECRET_KEY = "v411vmi5b*8jud3a!4$fme*31p@kk@9s&t^v1nt^%lt^-6lmc7" #os.getenv('dj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
