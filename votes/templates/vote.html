@@ -1,88 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-
-    <title>Nigeria @60</title>
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <!-- Icon -->
-    <link rel="stylesheet" href="assets/fonts/line-icons.css" />
-    <!-- Owl carousel -->
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
-    <link rel="stylesheet" href="assets/css/owl.theme.css" />
-
-    <!-- Animate -->
-    <link rel="stylesheet" href="assets/css/animate.css" />
-    <!-- Main Style -->
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <!-- Responsive Style -->
-    <link rel="stylesheet" href="assets/css/responsive.css" />
-
-    <!-- Others-->
-    <link rel="stylesheet" href="assets/css/nivo-lightbox.css" />
-    <link rel="stylesheet" href="assets/css/dropzone.css" />
-    <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet" />
-  </head>
-
-  <body>
+{% extends 'index.html' %}
+{% load static %}
+{% block header %} {% endblock %}
+{% block body %}
     <!-- Header Area wrapper Starts -->
-    <header id="header-wrap">
-      <!-- Navbar Start -->
-      <nav class="navbar navbar-expand-md fixed-top scrolling-navbar py-4">
-        <div class="container">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <a href="#" class="btn btn-common-white ml-4 mobile">Apply Now</a>
-          <!-- <a href="index.html" class="navbar-brand"><img src="assets/img/logo.png" alt=""></a>        -->
-          <button
-            class="navbar-toggler border-none"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarCollapse"
-            aria-controls="navbarCollapse"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <i class="lni-menu"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto justify-content-end clearfix">
-              <li class="nav-item">
-                <a class="nav-link" href="/"> Home </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/#challenge"> The Challenge </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/#timeline"> Timeline </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/#pricing"> The Prizes </a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="/#criteria"> Vote </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/#contact"> Nigerians </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/#faq"> FAQ </a>
-              </li>
-            </ul>
-            <a href="apply.html" class="btn btn-common-white desktop"
-              >Apply Now</a
-            >
-          </div>
-        </div>
-      </nav>
-      <!-- Navbar End -->
-    </header>
 
     <!-- Hero Area Start -->
     <div id="hero-area" class="hero-area-bg">
@@ -99,7 +19,7 @@
             <div
               class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center"
             >
-              <img class="vote-logo" src="./assets/img/coa.png" alt="" />
+              <img class="vote-logo" src="{% static "assets/img/coa.png" %}" alt="" />
               <a href="#" class="btn btn-common mt-4 mb-2">Vote this logo</a>
               <p class="mb-2 pointer text-underline">
                 Read the Design Rationale
@@ -113,7 +33,7 @@
             <div
               class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center"
             >
-              <img class="vote-logo" src="./assets/img/coa.png" alt="" />
+              <img class="vote-logo" src="{% static "assets/img/coa.png"%}" alt="" />
               <a href="#" class="btn btn-border mt-4 mb-2">Logo Selected</a>
               <p class="mb-2 pointer text-underline">
                 Read the Design Rationale
@@ -127,7 +47,7 @@
             <div
               class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center"
             >
-              <img class="vote-logo" src="./assets/img/coa.png" alt="" />
+              <img class="vote-logo" src="{% static "assets/img/coa.png"%}" alt="" />
 
               <a href="#" class="btn btn-common mt-4 mb-2">Vote this logo</a>
               <p class="mb-2 pointer text-underline">
@@ -142,7 +62,7 @@
             <div
               class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center"
             >
-              <img class="vote-logo" src="./assets/img/coa.png" alt="" />
+              <img class="vote-logo" src="{% static "assets/img/coa.png" %}" alt="" />
               <a href="#" class="btn btn-common mt-4 mb-2">Vote this logo</a>
               <p class="mb-2 pointer text-underline">
                 Read the Design Rationale
@@ -218,66 +138,44 @@
       </div>
     </div>
 
-    <!-- Footer Section Start -->
-    <footer id="footer" class="footer-area section-padding hero-area">
-      <div id="copyright">
-        <div class="container">
-          <img
-            width="100px"
-            src="./assets/img/coa.png"
-            style="display: block; margin: 0 auto"
-          />
-          <h5 style="color: #f6f6f6; text-align: center; margin-top: 30px">
-            Contact Information
-          </h5>
-          <p class="text-white">
-            Nigeria @60 The Challenge Office <br />
-            Federal Ministry of Communications and Digital Economy P.M.B. 12578
-            Federal Secretariat Complex Phase I, Annex III, Shehu Shagari Way
-            Abuja FCT 900211 Nigeria <br />Phone: +234 803 000 0000
-            <br />Mobile: +234 803 000 0000
-          </p>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="copyright-content">
-                <p>
-                  Copyright © 2020 |<a rel="nofollow" href="#"
-                    >Ministry of Communications and Digital Economy</a
-                  >| All Right Reserved
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- Footer Section End -->
+    <style>
+      .myProgress {
+        width: 100%;
+        background-color: #00583550;
+        margin: 0 5px;
+        border-radius: 5px;
+      }
 
-    <!-- Go to Top Link -->
-    <a href="#" class="back-to-top">
-      <i class="lni-arrow-up"></i>
-    </a>
+      #myBar {
+        width: 30%;
+        height: 10px;
+        background-color: #005835;
+        border-radius: 5px;
+      }
+      #myBar1 {
+        width: 30%;
+        height: 10px;
+        background-color: #005835;
+        border-radius: 5px;
+      }
+      #myBar2 {
+        width: 30%;
+        height: 10px;
+        background-color: #005835;
+        border-radius: 5px;
+      }
+      #myBar3 {
+        width: 30%;
+        height: 10px;
+        background-color: #005835;
+        border-radius: 5px;
+      }
+    </style>
 
-    <!-- Preloader -->
-    <div id="preloader">
-      <div class="loader" id="loader-1"></div>
-    </div>
-    <!-- End Preloader -->
+{% endblock %}
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="assets/js/jquery-min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/wow.js"></script>
-    <script src="assets/js/jquery.nav.js"></script>
-    <script src="assets/js/scrolling-nav.js"></script>
-    <script src="assets/js/jquery.easing.min.js"></script>
-    <script src="./assets/js/timezz.js"></script>
-    <script src="./assets/js/nivo-lightbox.js"></script>
-    <script src="./assets/js/dropzone.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script>
+{% block customjs %}
+ <script>
       new TimezZ("#timer", {
         date: "Oct 1, 2020",
       });
@@ -327,47 +225,10 @@
         $("#myInput").trigger("focus");
       });
     </script>
-
-    <!-- PROGRESS STYLE AND SCRIPT -->
-
-    <style>
-      .myProgress {
-        width: 100%;
-        background-color: #00583550;
-        margin: 0 5px;
-        border-radius: 5px;
-      }
-
-      #myBar {
-        width: 30%;
-        height: 10px;
-        background-color: #005835;
-        border-radius: 5px;
-      }
-      #myBar1 {
-        width: 30%;
-        height: 10px;
-        background-color: #005835;
-        border-radius: 5px;
-      }
-      #myBar2 {
-        width: 30%;
-        height: 10px;
-        background-color: #005835;
-        border-radius: 5px;
-      }
-      #myBar3 {
-        width: 30%;
-        height: 10px;
-        background-color: #005835;
-        border-radius: 5px;
-      }
-    </style>
-
     <script>
-      
+
       function move() {
-        
+
           var elem = document.getElementById("myBar");
           var elem1 = document.getElementById("myBar1");
           var elem2 = document.getElementById("myBar2");
@@ -386,5 +247,4 @@
           }
       window.onload=move();
     </script>
-  </body>
-</html>
+{% endblock %}
