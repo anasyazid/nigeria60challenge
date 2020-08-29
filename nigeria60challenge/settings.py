@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+import dj_database_url
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -26,6 +27,7 @@ SECRET_KEY = os.getenv('django_secret', "v411vmi5b*8jud3a!4$fme*31p@kk@9s&t^v1nt
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+IS_PRODUCTION = os.getenv('in_production', True)
 
 ALLOWED_HOSTS = ["*", "naija60.herokuapp.com"]
 
@@ -76,13 +78,15 @@ WSGI_APPLICATION = 'nigeria60challenge.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if IS_PRODUCTION:
+    DATABASES = {'default': dj_database_url.config()}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
