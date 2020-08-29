@@ -13,6 +13,12 @@ class VotingView(CreateView):
     template_name = 'vote.html'
     success_url = '/polls/view'
 
+    def get_context_data(self, **kwargs):
+        data = super(VotingView, self).get_context_data(**kwargs)
+        data['polls'] = Vote.objects.values('design_id').annotate(votes=Count('design_id')).order_by('votes')
+        data['vote_count'] = Vote.objects.values('design_id').count()
+        return data
+
 
 class ListCreateVote(ListCreateAPIView):
     model = Vote
