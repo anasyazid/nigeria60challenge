@@ -1,0 +1,1 @@
+web: gunicorn naija60challenge.wsgi --log-file -
