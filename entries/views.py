@@ -1,15 +1,41 @@
-from django.views.generic import ListView, FormView
+from django.db import transaction
+from django.views.generic import ListView, FormView, View
+from django.shortcuts import render, redirect
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
 from .forms import EntrySubmissionForm
 from .models import Entry
 from .serializers import EntrySerializer
 
+from entries.forms import EntrySubmissionForm, PersonCreationForm
 
-class EntrySubmission(FormView):
+
+class EntrySubmission(View):
     model = Entry
-    form_class = EntrySubmissionForm
     template_name = 'apply.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(request, 'apply.html')
+
+    @transaction.atomic
+    def post(self, request, *args, **kwargs):
+        entry_form = EntrySubmissionForm(request.POST, request.FILES)
+        person_form = PersonCreationForm(request.POST, request.FILES)
+        
+        print(request.POST)
+        if person_form.is_valid() and entry_form.is_valid():
+            # process the data in form.cleaned_data as required
+            # redirect to a new URL:
+            person = person_form.save()
+            entry = entry_form.save(commit=False)
+            entry.person = person
+            entry.save()
+            print(person_form.cleaned_data) 
+            print(entry_form.cleaned_data) 
+            #return redirect('/entries')
+        print(person_form.errors.as_data())
+        print(entry_form.errors.as_data())
+        return render(request, 'apply.html', {'entry_form': entry_form, 'person_form': person_form})
 
 
 class ListCreateEntries(ListCreateAPIView):

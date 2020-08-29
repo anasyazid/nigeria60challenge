@@ -1980,3 +1980,64 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
 .modal{
   margin-top: 200px;
 }
+
+
+
+/*===========================================*/
+/* FORM WIZARD CSS ===========================*/
+#smartwizard > .nav {
+  display: none !important;
+}
+
+.sw-theme-default {
+  border: none !important;
+}
+
+.sw-theme-default>.tab-content>.tab-pane {
+  padding: 0rem !important;
+}
+
+.sw .toolbar {
+  padding: 0rem !important;
+  margin-top: 3.3rem;
+}
+
+.sw-theme-default .toolbar>.btn {
+  padding: 10px 30px !important;
+  cursor: pointer !important;
+  font-weight: 400 !important;
+  color: #fff;
+  border-radius: 30px !important;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  display: inline-block;
+  background-color: #005835 !important;
+  position: relative;
+  z-index: 1;
+  text-transform: uppercase !important;
+}
+
+.poetry.hidden,
+.slogan.hidden,
+.photo.hidden {
+  display: none;
+}
+
+.input-0.invalid,
+.input-1.invalid {
+  border-bottom: solid 1px tomato !important;
+}
+
+.member-remove {
+  position: relative !important;
+}
+
+.member-remove span {
+  position: absolute !important;
+  right: 20px;
+  top: 40%;
+  color: tomato;
+  cursor: pointer;
+}

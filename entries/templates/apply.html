@@ -1,106 +1,244 @@
 {% extends 'index.html' %}
+{% load static %}
 {% block header %} {% endblock %}
 {% block body %}
     <!-- Hero Area Start -->
     <div id="hero-area" class="hero-area-bg">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">
-                    Bio Data
-                </h2>
-                <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
-            </div>
-            <div>
-                <div>
-                    <p class="text-green">Are you applying as a team ?</p>
-                    <label class="radio-container">
-                        <p class="check-label">Yes</p>
-                        <input type="radio" checked="checked" name="team" value="yes"/>
-                        <span class="checkmark"></span>
-                    </label>
+            <form method="POST" id="entries-form" enctype="multipart/form-data">
+                {% csrf_token %}
 
-                    <label class="radio-container">
-                        <p class="check-label">No</p>
-                        <input type="radio" name="team" value="no"/>
-                        <span class="checkmark"></span>
-                    </label>
-                </div>
+                {% for key, value in emtry_form.errors.items %}
+                    <span class="text-danger">{{value}}</span>
+                {% endfor %}
 
-                <div class="mt-4">
-                    <p class="text-green">Kindly provide the name of other members</p>
-                    <div>
-                        <div class="row">
-                            <div class="mt-4 col-sm-6">
-                                <input placeholder="Member Name" type="text" required=""/>
+                {% for key, value in person_form.errors.items %}
+                    <span class="text-danger">{{value}}</span>
+                {% endfor %}
+
+                <div id="smartwizard">
+                    <ul class="nav">
+                       <li>
+                           <a class="nav-link" href="#step-1">
+                              Step 1
+                           </a>
+                       </li>
+                       <li>
+                           <a class="nav-link" href="#step-2">
+                              Step 2
+                           </a>
+                       </li>
+                       <li>
+                            <a class="nav-link"></a>
+                        </li>
+                    </ul>
+                 
+                    <div class="tab-content">
+                        <!-- Bio Data -->
+                        <div id="step-1" class="tab-pane" role="tabpanel">
+                            <div class="section-header">
+                                <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">
+                                    Bio Data
+                                </h2>
+                                <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
                             </div>
-                            <div class="mt-4 col-sm-6">
-                                <input placeholder="Member Name" type="text" required=""/>
+
+                            
+                            <div>
+                                <p class="text-green">Are you applying as a team ?</p>
+                                <label class="radio-container">
+                                    <p class="check-label">Yes</p>
+                                    <input type="radio" checked="checked" name="team" value="yes"/>
+                                    <span class="checkmark"></span>
+                                </label>
+            
+                                <label class="radio-container">
+                                    <p class="check-label">No</p>
+                                    <input type="radio" name="team" value="no"/>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <p class="text-green">Kindly provide the name of other members</p>
+                                <div>
+                                    <div class="row" id="member">
+                                        <div class="mt-4 col-sm-6">
+                                            <input placeholder="Member Name" type="text" name="member[]" required="" class="members input-0"/>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="pointer add mt-3">
+                                        <span id="addMemberBtn"><i class="lni-plus"></i> Add Member</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <p class="text-green">Details of Lead Applicant</p>
+                                <div>
+                                    <div class="row">
+                                        <div class="mt-4 col-sm-6">
+                                            <input placeholder="Full Name*" name="fullname" type="text" required="" class="input-0"/>
+                                        </div>
+                                        <div class="mt-4 col-sm-6">
+                                            <input placeholder="Phone Number*" name="phone_number" type="tel" required="" class="input-0"/>
+                                        </div>
+                                        <div class="mt-4 col-sm-6">
+                                            <input placeholder="Email*" name="email" type="email" required="" class="input-0"/>
+                                        </div>
+                                        <div class="mt-4 col-sm-6 relative">
+                                            <select class="select-css pointer input-0" id="states" name="state_of_origin">
+                                                <option value="">State of Origin*</option>
+                                            </select>
+                                            <i class="lni-chevron-down drop-down"></i>
+                                        </div>
+                                        <div class="mt-4 col-sm-6">
+                                            <input placeholder="Age*" type="number" required="" class="input-0" name="age"/>
+                                        </div>
+                                        <div class="mt-4 col-sm-12">
+                                            <input placeholder="Contact Address*" type="text" required="" class="input-0" name="contact_address"/>
+                                        </div>
+                                        <div class="mt-4 col-sm-6 relative">
+                                            <select class="select-css pointer input-0" name="id_type">
+                                                <option value="">Type of ID*</option>
+                                                <option value="National ID">National ID</option>
+                                                <option value="Passport">Passport</option>
+                                            </select>
+                                            <i class="lni-chevron-down drop-down"></i>
+                                        </div>
+                                        <div class="mt-4 col-sm-6">
+                                            <input placeholder="ID Number*" type="text" required="" class="input-0" name="id_number"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--<div class="mt-5 d-flex justify-content-center">
+                                    <div>
+                                        <a href="./apply2.html" class="btn btn-common">Next <i
+                                                class="lni-chevron-right ml-2 mt-1"></i></a>
+                                    </div>
+                                </div>-->
                             </div>
                         </div>
-                        <div class="pointer add mt-3">
-                            <i class="lni-plus"></i> Add Member
+
+
+                        <!-- Challenge Submission -->
+                        <div id="step-2" class="tab-pane" role="tabpanel">
+                            <div class="section-header">
+                                <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">
+                                    Challenge Submission
+                                </h2>
+                                <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
+                            </div>
+
+                            <div class="mt-4">
+                                <p class="text-green">What challenge are you submitting for?</p>
+                                <div class="ml-0 mt-4 col-sm-6 pl-0 relative">
+                                    <select class="select-css pointer challenge-choice input-1" name="category">
+                                    <option value="">Select Challenge*</option>
+                                    <option value="poetry">Poetry</option>
+                                    <option value="slogan">Slogan</option>
+                                    <option value="photography">Photography</option>
+                                    </select>
+                                    <i class="lni-chevron-down drop-down"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4 slogan">
+                                <div class="mt-4">
+                                    <input placeholder="Enter slogan here*" name="slogan" type="text" required="" class="input-1" />
+                                </div>
+                            </div>
+                
+                            <div class="mt-4 poetry">
+                                <div class="mt-4">
+                                    <input placeholder="Enter Poem*" name="poem" type="poem" required="" class="input-1" />
+                                </div>
+                            </div>
+
+                            <div class="poetry">
+                                <div class="mt-4">
+                                    <input
+                                    placeholder="Enter Url to your video here*"
+                                    type="url"
+                                    required=""
+                                    name="poem_url"
+                                    class="input-1"
+                                    />
+                                </div>
+                            </div>
+                            
+                            <div class="photo">
+                                <div class="mt-4 photo">
+                                    <p class="text-green">
+                                        Upload your pictures *Maximum of 3 & in .jpg or .png format
+                                    </p>
+                                    <div class="row photo">
+                                        <div class="mt-4 col-sm-4">
+                                            <input type="file" name="pic_1" class="members input-1"/>
+                                        </div>
+                                        <div class="mt-4 col-sm-4">
+                                            <input type="file" name="pic_2" class="members"/>
+                                        </div>
+                                        <div class="mt-4 col-sm-4">
+                                            <input type="file" name="pic_3" class="members"/>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="mt-4">
+                                <div>
+                                    <label class="check-container">
+                                    I consent to the use of my submissions by the Federal Republic
+                                    of Nigeria towards the celebration of Nigeria @60
+                                    <input
+                                        type="checkbox"
+                                        checked="checked"
+                                        name="team"
+                                        value="yes"
+                                    />
+                                    <span class="checkmark-2"></span>
+                                    </label>
+                                </div>
+                            </div>
+                
+                            <div class="mt-4 slogan">
+                                <p class="text-green">Slogan - criteria & guide</p>
+                                <p>
+                                    1- The four word slogan challenge requires you to provide a four
+                                    word slogan fitting the theme of the Nigeria @ 60 Challenge
+                                    “Beauty and Ecellence”<br />
+                                    2- The slogan will be used in any communication material throught
+                                    the year.<br />
+                                    3- The top three slogans will win a prize<br />
+                                </p>
+                            </div>
+
+                            <div class="mt-4 photo">
+                                <p class="text-green">Photography - criteria & guide</p>
+                                <p>
+                                    1- The Photography challenge requires you to provide a custom photo fitting the theme of the Nigeria @ 60 Challenge
+                                    “Beauty and Excellence”<br />
+                                    2- The photo will be used in any communication material throught
+                                    the year.<br />
+                                    3- The top three photos will win a prize<br />
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="mt-4">
-                    <p class="text-green">Details of Lead Applicant</p>
-                    <div>
-                        <div class="row">
-                            <div class="mt-4 col-sm-6">
-                                <input placeholder="Full Name*" type="text" required=""/>
-                            </div>
-                            <div class="mt-4 col-sm-6">
-                                <input placeholder="Phone Number*" type="tel" required=""/>
-                            </div>
-                            <div class="mt-4 col-sm-6">
-                                <input placeholder="Email*" type="email" required=""/>
-                            </div>
-                            <div class="mt-4 col-sm-6 relative">
-                                <select class="select-css pointer">
-                                    <option>State of Origin*</option>
-                                    <option>Apples</option>
-                                    <option>Bananas</option>
-                                    <option>Grapes</option>
-                                    <option>Oranges</option>
-                                </select>
-                                <i class="lni-chevron-down drop-down"></i>
-                            </div>
-                            <div class="mt-4 col-sm-6">
-                                <input placeholder="Age*" type="number" required=""/>
-                            </div>
-                            <div class="mt-4 col-sm-12">
-                                <input placeholder="Contact Address*" type="text" required=""/>
-                            </div>
-                            <div class="mt-4 col-sm-6 relative">
-                                <select class="select-css pointer">
-                                    <option>Type of ID*</option>
-                                    <option>Apples</option>
-                                    <option>Bananas</option>
-                                    <option>Grapes</option>
-                                    <option>Oranges</option>
-                                </select>
-                                <i class="lni-chevron-down drop-down"></i>
-                            </div>
-                            <div class="mt-4 col-sm-6">
-                                <input placeholder="ID Number*" type="text" required=""/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-5 d-flex justify-content-center">
-                        <div>
-                            <a href="./apply2.html" class="btn btn-common">Next <i
-                                    class="lni-chevron-right ml-2 mt-1"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
     <!-- Hero Area End -->
 {% endblock %}
 
 {% block customjs %}
+    <script src="{% static "assets/js/states.js" %}"></script>
+    <script src="{% static "assets/js/entries.js" %}"></script>
     <script>
         new TimezZ("#timer", {
             date: "Oct 1, 2020",
@@ -109,6 +247,34 @@
     <script>
         $(document).ready(function () {
             $("#announcement").nivoLightbox();
+
+            //Populate states selection box
+            $("#states").html(`<option value="">State of Origin*</option>` + states.map(state => {
+                return `<option value="${state}">${state}</option>`;
+            }).join(''));
+
+            // SmartWizard initialize
+            $('#smartwizard').smartWizard();
+
+            // Initialize the leaveStep event
+            $("#smartwizard").on("leaveStep", function(e, anchorObject, currentStepIndex, nextStepIndex, stepDirection) {
+                const elems = document.querySelectorAll(`.input-${currentStepIndex}`);
+                let errorCount = 0;
+                elems.forEach(elem => {
+                    if(!elem.value && elem.parentElement.parentElement.classList.contains("hidden") === false) {
+                        errorCount += 1;
+                        elem.classList.add('invalid');
+                    }
+                });
+                if(errorCount > 0 && stepDirection === "forward") return false;
+                
+                if(nextStepIndex === 2) {
+                    console.log('submit form');
+                    $("#entries-form").submit();
+                    //return false;
+                }
+            });
+            
         });
     </script>
     <script>
