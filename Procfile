@@ -1,1 +1,1 @@
-web: gunicorn djangoherokuapp.wsgi --log-file -
+web: gunicorn naija60challenge.wsgi --log-file -
