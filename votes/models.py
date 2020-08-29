@@ -6,5 +6,5 @@ class Vote(models.Model):
     facebook_token = models.CharField(max_length=255, unique=True)
     full_name = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=255)
-    design_id = models.PositiveSmallIntegerField()
+    design_id = models.PositiveSmallIntegerField(error_messages={'required': 'You must choose a design to vote'})
     timestamp = models.DateTimeField(auto_now_add=True)
