@@ -2045,3 +2045,13 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
 .team-wrapper.hidden {
   display: none !important;
 }
+
+.form-relative {
+  position: relative;
+}
+
+.form-relative i {
+  position: absolute;
+  right: 13px;
+  top: 30% !important;
+}
