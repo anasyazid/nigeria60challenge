@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+import dj_database_url
+import django_heroku
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -26,6 +28,8 @@ SECRET_KEY = os.getenv('django_secret', "v411vmi5b*8jud3a!4$fme*31p@kk@9s&t^v1nt
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+IS_PRODUCTION = int(os.getenv('in_production', 1))
+
 
 ALLOWED_HOSTS = ["*", "naija60.herokuapp.com"]
 
@@ -76,13 +80,18 @@ WSGI_APPLICATION = 'nigeria60challenge.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+print(IS_PRODUCTION)
+if IS_PRODUCTION:
+    print("In production")
+    DATABASES = {'default': dj_database_url.config()}
+else:
+    print("Not inn production")
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -129,4 +138,6 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+if IS_PRODUCTION:
+    django_heroku.settings(locals())
