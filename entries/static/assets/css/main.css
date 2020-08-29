@@ -2041,3 +2041,7 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
   color: tomato;
   cursor: pointer;
 }
+
+.team-wrapper.hidden {
+  display: none !important;
+}

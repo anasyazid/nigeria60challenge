@@ -33,7 +33,7 @@
                         </li>
                     </ul>
                  
-                    <div class="tab-content">
+                    <div class="tab-content" id="tab-content">
                         <!-- Bio Data -->
                         <div id="step-1" class="tab-pane" role="tabpanel">
                             <div class="section-header">
@@ -48,25 +48,24 @@
                                 <p class="text-green">Are you applying as a team ?</p>
                                 <label class="radio-container">
                                     <p class="check-label">Yes</p>
-                                    <input type="radio" checked="checked" name="team" value="yes"/>
+                                    <input type="radio" checked="checked" class="is-team" name="team" value="yes"/>
                                     <span class="checkmark"></span>
                                 </label>
             
                                 <label class="radio-container">
                                     <p class="check-label">No</p>
-                                    <input type="radio" name="team" value="no"/>
+                                    <input type="radio" name="team" class="is-team" value="no"/>
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
                             
-                            <div class="mt-4">
+                            <div class="mt-4 team-wrapper">
                                 <p class="text-green">Kindly provide the name of other members</p>
                                 <div>
                                     <div class="row" id="member">
                                         <div class="mt-4 col-sm-6">
                                             <input placeholder="Member Name" type="text" name="member[]" required="" class="members input-0"/>
                                         </div>
-                                        
                                     </div>
                                     <div class="pointer add mt-3">
                                         <span id="addMemberBtn"><i class="lni-plus"></i> Add Member</span>
@@ -80,6 +79,7 @@
                                     <div class="row">
                                         <div class="mt-4 col-sm-6">
                                             <input placeholder="Full Name*" name="fullname" type="text" required="" class="input-0"/>
+                                            <input type="hidden" name="team_members" id="team-members" >
                                         </div>
                                         <div class="mt-4 col-sm-6">
                                             <input placeholder="Phone Number*" name="phone_number" type="tel" required="" class="input-0"/>
@@ -144,19 +144,19 @@
                                 </div>
                             </div>
                             
-                            <div class="mt-4 slogan">
+                            <div class="mt-4 slogan hidden">
                                 <div class="mt-4">
                                     <input placeholder="Enter slogan here*" name="slogan" type="text" required="" class="input-1" />
                                 </div>
                             </div>
                 
-                            <div class="mt-4 poetry">
+                            <div class="mt-4 poetry hidden">
                                 <div class="mt-4">
                                     <input placeholder="Enter Poem*" name="poem" type="poem" required="" class="input-1" />
                                 </div>
                             </div>
 
-                            <div class="poetry">
+                            <div class="poetry hidden">
                                 <div class="mt-4">
                                     <input
                                     placeholder="Enter Url to your video here*"
@@ -168,12 +168,12 @@
                                 </div>
                             </div>
                             
-                            <div class="photo">
-                                <div class="mt-4 photo">
+                            <div class="photo hidden">
+                                <div class="mt-4 photo hidden">
                                     <p class="text-green">
                                         Upload your pictures *Maximum of 3 & in .jpg or .png format
                                     </p>
-                                    <div class="row photo">
+                                    <div class="row photo hidden">
                                         <div class="mt-4 col-sm-4">
                                             <input type="file" name="pic_1" class="members input-1"/>
                                         </div>
@@ -204,7 +204,7 @@
                                 </div>
                             </div>
                 
-                            <div class="mt-4 slogan">
+                            <div class="mt-4 slogan hidden">
                                 <p class="text-green">Slogan - criteria & guide</p>
                                 <p>
                                     1- The four word slogan challenge requires you to provide a four
@@ -216,7 +216,7 @@
                                 </p>
                             </div>
 
-                            <div class="mt-4 photo">
+                            <div class="mt-4 photo hidden">
                                 <p class="text-green">Photography - criteria & guide</p>
                                 <p>
                                     1- The Photography challenge requires you to provide a custom photo fitting the theme of the Nigeria @ 60 Challenge
@@ -253,11 +253,13 @@
                 return `<option value="${state}">${state}</option>`;
             }).join(''));
 
+            
             // SmartWizard initialize
             $('#smartwizard').smartWizard();
 
             // Initialize the leaveStep event
             $("#smartwizard").on("leaveStep", function(e, anchorObject, currentStepIndex, nextStepIndex, stepDirection) {
+                //Validate Entries Form
                 const elems = document.querySelectorAll(`.input-${currentStepIndex}`);
                 let errorCount = 0;
                 elems.forEach(elem => {
@@ -268,10 +270,19 @@
                 });
                 if(errorCount > 0 && stepDirection === "forward") return false;
                 
+                //Submit Entries Form
                 if(nextStepIndex === 2) {
-                    console.log('submit form');
+                    //stringify team members
+                    const teamMembers = document.querySelectorAll('.members.input-0');
+                    const team = $("#team-members");
+                    let str = '';
+                    //loop through members
+                    teamMembers.forEach(elem => {
+                        if(elem.value) str += `${elem.value}, `;
+                    })
+                    team.val(str);
+
                     $("#entries-form").submit();
-                    //return false;
                 }
             });
             
