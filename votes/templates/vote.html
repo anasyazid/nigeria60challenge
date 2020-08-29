@@ -24,7 +24,8 @@
                     >
                         <img class="vote-logo" src="{% static "assets/img/coa.png" %}" alt=""/>
 
-                        <label for="design-1" href="#" class="btn btn-border mt-4 mb-2">Vote this logo</label>
+                        <label for="design-1" href="#" class="btn voting-btn btn-border mt-4 mb-2">Vote this
+                            logo</label>
                         <p
                                 class="mb-2 pointer text-underline"
                                 data-toggle="modal"
@@ -42,7 +43,7 @@
                             class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center"
                     >
                         <img class="vote-logo" src="{% static "assets/img/coa.png" %}" alt=""/>
-                        <label for="design-2" href="#" class="btn btn-border mt-4 mb-2">Logo Selected</label>
+                        <label for="design-2" href="#" class="btn voting-btn btn-border mt-4 mb-2">Vote this logo</label>
                         <p
                                 class="mb-2 pointer text-underline"
                                 data-toggle="modal"
@@ -62,7 +63,8 @@
                     >
                         <img class="vote-logo" src="{% static "assets/img/coa.png" %}" alt=""/>
 
-                        <label for="design-3" href="#" class="btn btn-border mt-4 mb-2">Vote this logo</label>
+                        <label for="design-3" href="#" class="btn voting-btn btn-border mt-4 mb-2">Vote this
+                            logo</label>
                         <p
                                 class="mb-2 pointer text-underline"
                                 data-toggle="modal"
@@ -80,7 +82,8 @@
                             class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center"
                     >
                         <img class="vote-logo" src="{% static "assets/img/coa.png" %}" alt=""/>
-                        <label for="design-4" href="#" class="btn btn-border mt-4 mb-2">Vote this logo</label>
+                        <label for="design-4" href="#" class="btn voting-btn btn-border mt-4 mb-2">Vote this
+                            logo</label>
                         <p
                                 class="mb-2 pointer text-underline"
                                 data-toggle="modal"
@@ -566,5 +569,19 @@
         }
 
         window.onload = move();
+    </script>
+    <script>
+        var voting_btns = document.querySelectorAll('.voting-btn')
+        voting_btns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                voting_btns.forEach(sub_btn => {
+                    sub_btn.classList.remove('btn-common')
+                    sub_btn.classList.add('btn-border')
+                })
+                btn.classList.add('btn-common')
+                btn.classList.remove('btn-border')
+
+            })
+        })
     </script>
 {% endblock %}
