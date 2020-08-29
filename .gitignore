@@ -130,3 +130,5 @@ dmypy.json
 
 #images folder
 uploads/
+
+**/migrations/
