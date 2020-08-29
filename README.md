@@ -1,4 +1,12 @@
 # nigeria60challenge
+
+## Requirements
+git bash
+python 3.7+
+
+
+## Setting up
+
 Clone repository
 ```sh
 git clone git@github.com:N-60/nigeria60challenge.git
@@ -12,13 +20,13 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Run server
+## Running locally
 ```sh
 source venv/bin/activate
 python manage.py runserver
 ```
 
-Make database migrations
+## Make database migrations
 ```sh
 source venv/bin/activate
 python manage.py make migrations
