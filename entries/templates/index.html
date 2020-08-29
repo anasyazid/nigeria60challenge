@@ -29,12 +29,13 @@
     <!-- Others-->
     <link rel="stylesheet" href="{% static "assets/css/nivo-lightbox.css" %}"/>
     <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet"
+          type="text/css"/>
 </head>
 <body>
-  <!-- Header Area wrapper Starts -->
-    <header id="header-wrap">
-        {% block navbar %}
+<!-- Header Area wrapper Starts -->
+<header id="header-wrap">
+    {% block navbar %}
 
         <!-- Navbar Start -->
         <nav class="navbar navbar-expand-md fixed-top scrolling-navbar py-4">
@@ -56,50 +57,47 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav mr-auto justify-content-end clearfix">
                         <li class="nav-item">
-                            <a class="nav-link {% if request.path == '/' %} active {% endif %}" href="/"> Home </a>
+                            <a class="nav-link {% if request.path == '/' %} active {% endif %}" href="/#"> Home </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#challenge"> The Challenge </a>
+                            <a class="nav-link" href="/#challenge"> The Challenge </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#timeline"> Timeline </a>
+                            <a class="nav-link" href="/#timeline"> Timeline </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#pricing"> The Prizes </a>
+                            <a class="nav-link" href="/#pricing"> The Prizes </a>
                         </li>
                         <li class="nav-item {% if 'polls' in request.path %} active {% endif %}">
-                            <a class="nav-link" href="/polls"> Vote </a>
+                            <a class="nav-link" href="/#criteria"> Vote </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#contact"> Nigerians </a>
+                            <a class="nav-link" href="/#contact"> Nigerians </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#faq"> FAQ </a>
+                            <a class="nav-link" href="/#faq"> FAQ </a>
                         </li>
                     </ul>
-                    <a href="/entries" class="btn btn-common-white desktop">Apply Now</a>
+                    <a href="{% url 'entries_guide' %}" class="btn btn-common-white desktop">Apply Now</a>
                 </div>
             </div>
         </nav>
         <!-- Navbar End -->
 
-            {% endblock %}
+    {% endblock %}
 
     {% block header %}
         <!-- Hero Area Start -->
-        <div id="hero-area" class="hero-area-bg">
+        <div id="hero-area" class="hero-area-bg mt-5 pt-5 pb-5" style="margin-top:700px;">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 mt-5 ">
                         <div class="contents">
                             <div>
                                 <img class="coa" src="{% static "assets/img/coa.png" %}"/>
-
                             </div>
                             <h1 class="head-title">Nigeria@60 Challenge</h1>
-                            <p class="sub-title">
-                                <b>Theme:</b> Together as one at 60.
-                            </p>
+                            <p class="sub-title"><b>Theme:</b> Together at 60.</p>
                             <div class="header-button">
                                 <a
                                         id="announcement"
@@ -114,12 +112,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                         <div class="intro-img">
                             <img
-                                    class="img-fluid p-2 pt-3 pl-4"
-                                    src="{% static "assets/img/map.svg" %}"
+                                    class=""
+                                    src="{% static  "assets/img/hero1.png" %}"
                                     alt=""
+                                    style="position: absolute; width: 130%; pointer-events: none;"
                             />
                         </div>
                     </div>
@@ -127,11 +126,11 @@
             </div>
         </div>
     {% endblock %}
-        <!-- Hero Area End -->
-    </header>
+    <!-- Hero Area End -->
+</header>
 
 {% block body %}
-      <section id="challenge" class="section-padding hero-area-alt">
+    <section id="challenge" class="section-padding hero-area-alt">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">
@@ -293,50 +292,62 @@
         </div>
     </section>
 
-    <section id="criteria" class="criteria section-padding hero-area">
-        <div class="container">
-            <div class="section-header">
-                <h2
-                        class="section-title wow fadeInDown text-white"
-                        style="color: #f6f6f6 !important"
-                        data-wow-delay="0.3s"
-                >
-                    Vote Nigeria@60 Brand
-                </h2>
-                <div
-                        class="shape wow fadeInDown bg-white"
-                        style="background: #f6f6f6 !important"
-                        data-wow-delay="0.3s"
-                ></div>
-            </div>
-            <p class="pl-3 text-white">
-                To give Nigerians a memorable 60th anniversary it is crucial to choose a brand.<br>
-                There are four branding options and one needs to be selected.<br>
-                The selected brand will be used during the 60th Anniversary celebrations.<br>
-                The selected brand will also be used in Naira currency notes and postal stamps.<br>
-                The selected brand will be used as merchandise by manufactures.<br>
-                Be part of the celebration by participating in choosing the Nigeria@60's brand.<br>
-                Be part of history.<br>
-            </p>
-            <div class="row py-4">
-                <div class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center">
-                    <img class="vote-logo" src="{% static "assets/img/coa.png" %}" alt=""/>
-                    <a href="#" class="btn btn-common-white mt-4 mb-5">Vote</a>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center">
-                    <img class="vote-logo" src="{% static "assets/img/coa.png" %}" alt=""/>
-                    <a href="#" class="btn btn-common-white mt-4 mb-5">Vote</a>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center">
-                    <img class="vote-logo" src="{% static "assets/img/coa.png" %}" alt=""/>
-                    <a href="#" class="btn btn-common-white mt-4 mb-5">Vote</a>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center">
-                    <img class="vote-logo" src="{% static "assets/img/coa.png" %}" alt=""/>
-                    <a href="#" class="btn btn-common-white mt-4 mb-5">Vote</a>
-                </div>
-            </div>
+  <section id="criteria" class="criteria section-padding hero-area">
+      <div class="container">
+        <div class="section-header">
+          <h2
+            class="section-title wow fadeInDown text-white"
+            style="color: #f6f6f6 !important"
+            data-wow-delay="0.3s"
+          >
+            Vote Nigeria@60 Brand
+          </h2>
+          <div
+            class="shape wow fadeInDown bg-white"
+            style="background: #f6f6f6 !important"
+            data-wow-delay="0.3s"
+          ></div>
         </div>
+        <p class="pl-3 text-white">
+          To give Nigerians a memorable 60th anniversary it is crucial to choose
+          a brand.<br />
+          There are four branding options and one needs to be selected.<br />
+          The selected brand will be used during the 60th Anniversary
+          celebrations.<br />
+          The selected brand will also be used in Naira currency notes and
+          postal stamps.<br />
+          The selected brand will be used as merchandise by manufactures.<br />
+          Be part of the celebration by participating in choosing the
+          Nigeria@60's brand.<br />
+          Be part of history.<br />
+        </p>
+        <div class="row py-4">
+          <div
+            class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center"
+          >
+            <img class="vote-logo" src="{% static "assets/img/1.png" %}" alt="" />
+            <a href="{% url 'polls' %}" class="btn btn-common-white mt-4 mb-5">Vote</a>
+          </div>
+          <div
+            class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center"
+          >
+            <img class="vote-logo" src="{% static "assets/img/2.png" %}" alt="" />
+            <a href="{% url 'polls' %}" class="btn btn-common-white mt-4 mb-5">Vote</a>
+          </div>
+          <div
+            class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center"
+          >
+            <img class="vote-logo" src="{% static "assets/img/3.png" %}" alt="" />
+            <a href="{% url 'polls' %}" class="btn btn-common-white mt-4 mb-5">Vote</a>
+          </div>
+          <div
+            class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center"
+          >
+            <img class="vote-logo" src="{% static "assets/img/4.png" %}" alt="" />
+            <a href="{% url 'polls' %}" class="btn btn-common-white mt-4 mb-5">Vote</a>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="contact" class="section-padding bg-gray hero-area">
@@ -365,35 +376,58 @@
         </div>
     </section>
 
-    <section id="challenge" class="section-padding hero-area-alt">
-        <div class="container">
-            <div class="d-flex flex-column align-items-center">
-                <img src="{% static "assets/img/patami.png" %}"/>
-                <p class="text-center" style="color: #005835">
-                    “As part of the efforts to make Nigeria a digital economy and inline
-                    with the current Covid19 crisis, the entire event with the exception
-                    of the demo day will be done remotely via an online portal. This
-                    ensures safer, faster, transparent and more effective execution.”
-                </p>
-                <p class="text-center" style="color: #005835">
-                    <b
-                    >Dr. Isa Pantami • Minister of Communications and Digital
-                        Economy</b
-                    >
-                </p>
+  <section id="challenge" class="section-padding hero-area-alt">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm mx-4 mt-5">
+            <div class="d-flex flex-column align-items-center mt-4 pb-4">
+              <img width="85%" src="{% static "assets/img/pres.png" %}" />
+              <p class="text-center mt-3" style="color: #005835; line-height: 30px;">
+                “As part of the efforts to make Nigeria a digital economy and
+                inline with the current Covid19 crisis, the entire event with
+                the exception of the demo day will be done remotely via an
+                online portal. This ensures safer, faster, transparent and more
+                effective execution.”
+              </p>
+              <p class="text-center" style="color: #005835">
+                <b
+                  >Dr. Isa Pantami • Minister of Communications and Digital
+                  Economy</b
+                >
+              </p>
+            </div>
+          </div>
+          <div class="col-sm mx-4">
+            <div class="d-flex flex-column align-items-center mt-4 pb-4">
+              <img src="{% static "assets/img/patami.png" %}" />
+              <p class="text-center" style="color: #005835; line-height: 30px;">
+                “As part of the efforts to make Nigeria a digital economy and
+                inline with the current Covid19 crisis, the entire event with
+                the exception of the demo day will be done remotely via an
+                online portal. This ensures safer, faster, transparent and more
+                effective execution.”
+              </p>
+              <p class="text-center mb-5" style="color: #005835">
+                <b
+                  >Dr. Isa Pantami • Minister of Communications and Digital
+                  Economy</b
+                >
+              </p>
             </div>
             <div class="d-flex flex-column align-items-center mt-4 pb-4">
-                <img src="{% static "assets/img/lai.png" %}"/>
-                <p class="text-center" style="color: #005835">
-                    “The new brand must be impactful both at the national level
-                    postering unity and at international level improving positive
-                    impression of the country.”
-                </p>
-                <p class="text-center" style="color: #005835">
-                    <b>Lai Muhammad • Minister of Information and Culture</b>
-                </p>
+              <img src="{% static "assets/img/lai.png" %}" />
+              <p class="text-center" style="color: #005835; line-height: 30px;">
+                “The new brand must be impactful both at the national level
+                postering unity and at international level improving positive
+                impression of the country.”
+              </p>
+              <p class="text-center mb-5" style="color: #005835">
+                <b>Lai Muhammad • Minister of Information and Culture</b>
+              </p>
             </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <section id="faq" class="section-padding hero-area">
@@ -447,50 +481,50 @@
     </section>
 
 {% endblock %}
-    <!-- Footer Section Start -->
-    <footer id="footer" class="footer-area section-padding hero-area">
-        <div id="copyright">
-            <div class="container">
-                <img
-                        width="100px"
-                        src="{% static "assets/img/coa.png" %}"
-                        style="display: block; margin: 0 auto"
-                />
-                <h5 style="color: #f6f6f6; text-align: center; margin-top: 30px">
-                    Contact Information
-                </h5>
-                <p class="text-white">
-                    Nigeria @60 The Challenge Office <br> Federal Ministry of Communications
-                    and Digital Economy P.M.B. 12578 Federal Secretariat Complex Phase
-                    I, Annex III, Shehu Shagari Way Abuja FCT 900211 Nigeria <br>Phone: +234
-                    803 000 0000 <br>Mobile: +234 803 000 0000
-                </p>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="copyright-content">
-                            <p>
-                                Copyright © 2020 |<a rel="nofollow" href="#"
-                            >Ministry of Communications and Digital Economy</a
-                            >| All Right Reserved
-                            </p>
-                        </div>
+<!-- Footer Section Start -->
+<footer id="footer" class="footer-area section-padding hero-area">
+    <div id="copyright">
+        <div class="container">
+            <img
+                    width="100px"
+                    src="{% static "assets/img/coa.png" %}"
+                    style="display: block; margin: 0 auto"
+            />
+            <h5 style="color: #f6f6f6; text-align: center; margin-top: 30px">
+                Contact Information
+            </h5>
+            <p class="text-white">
+                Nigeria @60 The Challenge Office <br> Federal Ministry of Communications
+                and Digital Economy P.M.B. 12578 Federal Secretariat Complex Phase
+                I, Annex III, Shehu Shagari Way Abuja FCT 900211 Nigeria <br>Phone: +234
+                803 000 0000 <br>Mobile: +234 803 000 0000
+            </p>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="copyright-content">
+                        <p>
+                            Copyright © 2020 |<a rel="nofollow" href="#"
+                        >Ministry of Communications and Digital Economy</a
+                        >| All Right Reserved
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-    </footer>
-    <!-- Footer Section End -->
-
-    <!-- Go to Top Link -->
-    <a href="#" class="back-to-top">
-        <i class="lni-arrow-up"></i>
-    </a>
-
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader" id="loader-1"></div>
     </div>
-    <!-- End Preloader -->
+</footer>
+<!-- Footer Section End -->
+
+<!-- Go to Top Link -->
+<a href="#" class="back-to-top">
+    <i class="lni-arrow-up"></i>
+</a>
+
+<!-- Preloader -->
+<div id="preloader">
+    <div class="loader" id="loader-1"></div>
+</div>
+<!-- End Preloader -->
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="{% static "assets/js/jquery-min.js" %}"></script>
@@ -504,7 +538,8 @@
 <script src="{% static "assets/js/timezz.js" %}"></script>
 <script src="{% static "assets/js/nivo-lightbox.js" %}"></script>
 <script src="{% static "assets/js/main.js" %}"></script>
-<script src="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/js/jquery.smartWizard.min.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/js/jquery.smartWizard.min.js"
+        type="text/javascript"></script>
 {% block customjs %}
     <script>
         new TimezZ("#timer", {
