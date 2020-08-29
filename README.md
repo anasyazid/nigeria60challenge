@@ -16,6 +16,7 @@ Enter directory and install dependencies
 ```sh
 cd nigeria60challenge
 python -m venv venv
+echo in_production=0 > .env
 source venv/bin/activate
 pip install -r requirements.txt
 ```
