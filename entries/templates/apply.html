@@ -8,13 +8,19 @@
             <form method="POST" id="entries-form" enctype="multipart/form-data">
                 {% csrf_token %}
 
-                {% for key, value in emtry_form.errors.items %}
+                <!--{% for key, value in entry_form.errors.items %}
                     <span class="text-danger">{{value}}</span>
                 {% endfor %}
 
                 {% for key, value in person_form.errors.items %}
                     <span class="text-danger">{{value}}</span>
-                {% endfor %}
+                {% endfor %}-->
+
+                {% if person_form.errors.items or entry_form.errors.items  %}
+                    <div class="alert alert-danger">
+                        <small>Form data is invalid. Please check the form, correct and re-submit</small>
+                    </div>
+                {% endif %}
 
                 <div id="smartwizard">
                     <ul class="nav">
@@ -80,35 +86,47 @@
                                         <div class="mt-4 col-sm-6">
                                             <input placeholder="Full Name*" name="fullname" type="text" required="" class="input-0"/>
                                             <input type="hidden" name="team_members" id="team-members" >
+                                            <small class="text-danger">{{person_form.team_members.errors}}</small>
                                         </div>
                                         <div class="mt-4 col-sm-6">
                                             <input placeholder="Phone Number*" name="phone_number" type="tel" required="" class="input-0"/>
+                                            <small class="text-danger">{{person_form.phone_number.errors}}</small>
                                         </div>
                                         <div class="mt-4 col-sm-6">
                                             <input placeholder="Email*" name="email" type="email" required="" class="input-0"/>
+                                            <small class="text-danger">{{person_form.email.errors}}</small>
                                         </div>
-                                        <div class="mt-4 col-sm-6 relative">
-                                            <select class="select-css pointer input-0" id="states" name="state_of_origin">
-                                                <option value="">State of Origin*</option>
-                                            </select>
-                                            <i class="lni-chevron-down drop-down"></i>
+                                        <div class="mt-4 col-sm-6">
+                                            <div class="form-relative">
+                                                <select class="select-css pointer input-0" id="states" name="state_of_origin">
+                                                    <option value="">State of Origin*</option>
+                                                </select>
+                                                <i class="lni-chevron-down drop-down"></i>
+                                            </div>
+                                            <small class="text-danger">{{person_form.state_of_origin.errors}}</small>
                                         </div>
                                         <div class="mt-4 col-sm-6">
                                             <input placeholder="Age*" type="number" required="" class="input-0" name="age"/>
+                                            <small class="text-danger">{{person_form.age.errors}}</small>
                                         </div>
                                         <div class="mt-4 col-sm-12">
                                             <input placeholder="Contact Address*" type="text" required="" class="input-0" name="contact_address"/>
+                                            <small class="text-danger">{{person_form.contact_address.errors}}</small>
                                         </div>
-                                        <div class="mt-4 col-sm-6 relative">
-                                            <select class="select-css pointer input-0" name="id_type">
-                                                <option value="">Type of ID*</option>
-                                                <option value="National ID">National ID</option>
-                                                <option value="Passport">Passport</option>
-                                            </select>
-                                            <i class="lni-chevron-down drop-down"></i>
+                                        <div class="mt-4 col-sm-6">
+                                            <div class="form-relative">
+                                                <select class="select-css pointer input-0" name="id_type">
+                                                    <option value="">Type of ID*</option>
+                                                    <option value="National ID">National ID</option>
+                                                    <option value="Passport">Passport</option>
+                                                </select>
+                                                <i class="lni-chevron-down drop-down"></i>
+                                            </div>
+                                            <small class="text-danger">{{person_form.id_type.errors}}</small>
                                         </div>
                                         <div class="mt-4 col-sm-6">
                                             <input placeholder="ID Number*" type="text" required="" class="input-0" name="id_number"/>
+                                            <small class="text-danger">{{person_form.id_number.errors}}</small>
                                         </div>
                                     </div>
                                 </div>
@@ -133,26 +151,29 @@
 
                             <div class="mt-4">
                                 <p class="text-green">What challenge are you submitting for?</p>
-                                <div class="ml-0 mt-4 col-sm-6 pl-0 relative">
+                                <div class="ml-0 mt-4 col-sm-6 pl-0 form-relative">
                                     <select class="select-css pointer challenge-choice input-1" name="category">
-                                    <option value="">Select Challenge*</option>
-                                    <option value="poetry">Poetry</option>
-                                    <option value="slogan">Slogan</option>
-                                    <option value="photography">Photography</option>
+                                        <option value="">Select Challenge*</option>
+                                        <option value="poetry">Poetry</option>
+                                        <option value="slogan">Slogan</option>
+                                        <option value="photography">Photography</option>
                                     </select>
                                     <i class="lni-chevron-down drop-down"></i>
                                 </div>
+                                <small class="text-danger">{{entry_form.category.errors}}</small>
                             </div>
                             
                             <div class="mt-4 slogan hidden">
                                 <div class="mt-4">
                                     <input placeholder="Enter slogan here*" name="slogan" type="text" required="" class="input-1" />
+                                    <small class="text-danger">{{entry_form.slogan.errors}}</small>
                                 </div>
                             </div>
                 
                             <div class="mt-4 poetry hidden">
                                 <div class="mt-4">
                                     <input placeholder="Enter Poem*" name="poem" type="poem" required="" class="input-1" />
+                                    <small class="text-danger"></small>{{entry_form.poem.errors}}</small>
                                 </div>
                             </div>
 
@@ -165,6 +186,7 @@
                                     name="poem_url"
                                     class="input-1"
                                     />
+                                    <small class="text-danger"></small>{{entry_form.poem_url.errors}}</small>
                                 </div>
                             </div>
                             
@@ -183,9 +205,11 @@
                                         <div class="mt-4 col-sm-4">
                                             <input type="file" name="pic_3" class="members"/>
                                         </div>
-                                        
                                     </div>
                                 </div>
+                                <div><small class="text-danger"></small>{{entry_form.pic_1.errors}}</small></div>
+                                <div><small class="text-danger"></small>{{entry_form.pic_2.errors}}</small></div>
+                                <div><small class="text-danger"></small>{{entry_form.pic_3.errors}}</small></div>
                             </div>
                 
                             <div class="mt-4">
