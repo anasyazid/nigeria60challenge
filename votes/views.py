@@ -15,7 +15,10 @@ class VotingView(CreateView):
 
     def get_context_data(self, **kwargs):
         data = super(VotingView, self).get_context_data(**kwargs)
-        data['polls'] = Vote.objects.values('design_id').annotate(votes=Count('design_id')).order_by('votes')
+        try:
+            data['polls'] = Vote.objects.values('design_id').annotate(votes=Count('design_id')).order_by('design_id')
+        except KeyError:
+            data['polls'] = {}
         data['vote_count'] = Vote.objects.values('design_id').count()
         return data
 

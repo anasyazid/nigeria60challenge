@@ -1,10 +1,13 @@
 {% extends 'index.html' %}
 {% load static %}
+{% load utils %}
 {% block header %} {% endblock %}
 {% block body %}
 
     <!-- Header Area wrapper Starts -->
-
+               {% for key, value in form.errors.items %}
+                    <span class="text-danger">{{value}}</span>
+                {% endfor %}
     <!-- Hero Area Start -->
     <div id="hero-area" class="hero-area-bg">
         <div class="container">
@@ -35,7 +38,7 @@
                         <div class="mb-2 myProgress">
                             <div id="myBar"></div>
                         </div>
-                        <h5 class="mb-5">200 Votes</h5>
+                        <h5 class="mb-5">{{ polls.0.votes }}</h5>
                     </div>
                     <div
                             class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center"
@@ -53,7 +56,7 @@
                         <div class="mb-2 myProgress">
                             <div id="myBar1"></div>
                         </div>
-                        <h5 class="mb-5">200 Votes</h5>
+                        <h5 class="mb-5">{{ polls.1.votes }}</h5>
                     </div>
                     <div
                             class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center"
@@ -72,7 +75,7 @@
                         <div class="mb-2 myProgress">
                             <div id="myBar2"></div>
                         </div>
-                        <h5 class="mb-5">200 Votes</h5>
+                        <h5 class="mb-5">{{ polls.2.votes }}</h5>
                     </div>
                     <div
                             class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center"
@@ -90,7 +93,7 @@
                         <div class="mb-2 myProgress">
                             <div id="myBar3"></div>
                         </div>
-                        <h5 class="mb-5">{{ polls }}</h5>
+                        <h5 class="mb-5">{{ polls.3.votes }}</h5>
                     </div>
                 </div>
 
@@ -113,13 +116,13 @@
 
                     <div class="mt-4">
                         <div class="mt-4">
-                            <input placeholder="Full Name*" name="full_name" type="text" required=""/>
+                            <input placeholder="Full Name*" name="full_name" id="full_name" type="text" required=""/>
                         </div>
                     </div>
 
                     <div class="mt-4">
                         <div class="mt-4">
-                            <input placeholder="Phone Number*" name="phone_number" type="text" required=""/>
+                            <input placeholder="Phone Number*" name="phone_number" id="phone_number" type="text" required=""/>
                         </div>
                     </div>
 
@@ -440,6 +443,12 @@
         };
 
         function customFBLogin() {
+            var full_name = document.getElementById('full_name').value
+            var phone_number = document.getElementById('phone_number').value
+
+            if (full_name.length === 0 || phone_number.length <10) {
+                return window.alert("Please enter your full name and phone number")
+            }
             FB.login(function (response) {
                 if (response.status === 'connected') {
                     console.log(response)
@@ -539,10 +548,10 @@
             var id = setInterval(frame, 10);
 
             function frame() {
-                elem.style.width = width + "%";
-                elem1.style.width = width1 + "%";
-                elem2.style.width = width2 + "%";
-                elem3.style.width = width3 + "%";
+                elem.style.width = {{ polls.0.votes  | percentage:vote_count}} + "%";
+                elem1.style.width = {{ polls.1.votes  | percentage:vote_count}} + "%";
+                elem2.style.width = {{ polls.2.votes  | percentage:vote_count}} + "%";
+                elem3.style.width = {{ polls.3.votes  | percentage:vote_count}} + "%";
             }
         }
 

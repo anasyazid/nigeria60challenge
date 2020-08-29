@@ -28,7 +28,8 @@ SECRET_KEY = os.getenv('django_secret', "v411vmi5b*8jud3a!4$fme*31p@kk@9s&t^v1nt
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-IS_PRODUCTION = os.getenv('in_production', True)
+IS_PRODUCTION = int(os.getenv('in_production', 1))
+
 
 ALLOWED_HOSTS = ["*", "naija60.herokuapp.com"]
 
@@ -79,9 +80,12 @@ WSGI_APPLICATION = 'nigeria60challenge.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+print(IS_PRODUCTION)
 if IS_PRODUCTION:
+    print("In production")
     DATABASES = {'default': dj_database_url.config()}
 else:
+    print("Not inn production")
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -135,4 +139,5 @@ STATICFILES_DIRS = (
 )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-django_heroku.settings(locals())
+if IS_PRODUCTION:
+    django_heroku.settings(locals())
