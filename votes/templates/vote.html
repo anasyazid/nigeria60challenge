@@ -36,7 +36,7 @@
                         <div class="mb-2 myProgress">
                             <div id="myBar"></div>
                         </div>
-                        <h5 class="mb-5">{{ polls.0.votes }}</h5>
+                        <h5 class="mb-5">{{ polls | get_count:1 }}</h5>
                     </div>
                     <div
                             class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center"
@@ -54,7 +54,8 @@
                         <div class="mb-2 myProgress">
                             <div id="myBar1"></div>
                         </div>
-                        <h5 class="mb-5">{{ polls.1.votes }}</h5>
+                        <h5 class="mb-5">{{ polls | get_count:2 }}</h5>
+
                     </div>
                     <div
                             class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center"
@@ -73,7 +74,7 @@
                         <div class="mb-2 myProgress">
                             <div id="myBar2"></div>
                         </div>
-                        <h5 class="mb-5">{{ polls.2.votes }}</h5>
+                        <h5 class="mb-5">{{ polls | get_count:3 }}</h5>
                     </div>
                     <div
                             class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center"
@@ -91,7 +92,7 @@
                         <div class="mb-2 myProgress">
                             <div id="myBar3"></div>
                         </div>
-                        <h5 class="mb-5">{{ polls.3.votes }}</h5>
+                        <h5 class="mb-5">{{ polls | get_count:4 }}</h5>
                     </div>
                 </div>
 
@@ -102,7 +103,7 @@
 
                 <form method="post" id="vote-form">
                     {% csrf_token %}
-                    <div class="d-none">
+                    <div class="d-snone">
                         <input type="submit" id="submit-form"/>
                         <input type="text" name="facebook_id" id="facebook_id"/>
                         <input type="text" name="facebook_token" id="facebook_token"/>
@@ -450,18 +451,26 @@
             if (full_name.length === 0 || phone_number.length < 10) {
                 return window.alert("Please enter your full name and phone number")
             }
-            FB.login(function (response) {
-                if (response.status === 'connected') {
-                    console.log(response)
-                    document.getElementById('facebook_id').value = response.authResponse.userID
-                    document.getElementById('facebook_token').value = response.authResponse.accessToken
 
-                    document.getElementById('submit-form').click()
-                    // Logged into your webpage and Facebook.
-                } else {
-                    // The person is not logged into your webpage or we are unable to tell.
-                }
-            }, {scope: 'public_profile,email'})
+            {% if ':8000' in request.META.HTTP_HOST %}
+                document.getElementById('facebook_id').value = "FB-id" + Date.now()
+                document.getElementById('facebook_token').value = "FBT" + Date.now()
+                document.getElementById('submit-form').click()
+            {% else %}
+
+                FB.login(function (response) {
+                    if (response.status === 'connected') {
+                        console.log(response)
+                        document.getElementById('facebook_id').value = response.authResponse.userID
+                        document.getElementById('facebook_token').value = response.authResponse.accessToken
+
+                        document.getElementById('submit-form').click()
+                        // Logged into your webpage and Facebook.
+                    } else {
+                        // The person is not logged into your webpage or we are unable to tell.
+                    }
+                }, {scope: 'public_profile,email'})
+            {% endif %}
         }
 
         function checkLoginState() {
@@ -549,10 +558,10 @@
             var id = setInterval(frame, 10);
 
             function frame() {
-                elem.style.width = {{ polls.0.votes  | percentage:vote_count}} +"%";
-                elem1.style.width = {{ polls.1.votes  | percentage:vote_count}} +"%";
-                elem2.style.width = {{ polls.2.votes  | percentage:vote_count}} +"%";
-                elem3.style.width = {{ polls.3.votes  | percentage:vote_count}} +"%";
+                elem.style.width = {% percentage polls 1 vote_count %} +"%";
+                elem1.style.width = {% percentage polls 2 vote_count %} +"%";
+                elem2.style.width = {% percentage polls 3 vote_count %} +"%";
+                elem3.style.width = {% percentage polls 4 vote_count %} +"%";
             }
         }
 

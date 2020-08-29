@@ -11,7 +11,7 @@ from .models import Vote
 class VotingView(CreateView):
     form_class = VotingForm
     template_name = 'vote.html'
-    success_url = '/polls/view'
+    success_url = '/polls'
 
     def get_context_data(self, **kwargs):
         data = super(VotingView, self).get_context_data(**kwargs)
