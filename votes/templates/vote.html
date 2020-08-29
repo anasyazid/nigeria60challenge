@@ -34,16 +34,17 @@
                             Read the Design Rationale
                         </p>
 
-                        <div class="mb-2 myProgress">
+                        <div class="mb-2 myProgress vote-result">
                             <div id="myBar"></div>
                         </div>
-                        <h5 class="mb-5">{{ polls | get_count:1 }}</h5>
+                        <h5 class="mb-5 vote-result">{{ polls | get_count:1 }}</h5>
                     </div>
                     <div
                             class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center"
                     >
                         <img class="vote-logo" src="{% static "assets/img/2.png" %}" alt=""/>
-                        <label for="design-2" href="#" class="btn voting-btn btn-border mt-4 mb-2">Vote this logo</label>
+                        <label for="design-2" href="#" class="btn voting-btn btn-border mt-4 mb-2">Vote this
+                            logo</label>
                         <p
                                 class="mb-2 pointer text-underline"
                                 data-toggle="modal"
@@ -52,10 +53,10 @@
                             Read the Design Rationale
                         </p>
 
-                        <div class="mb-2 myProgress">
+                        <div class="mb-2 myProgress vote-result">
                             <div id="myBar1"></div>
                         </div>
-                        <h5 class="mb-5">{{ polls | get_count:2 }}</h5>
+                        <h5 class="mb-5 vote-result">{{ polls | get_count:2 }}</h5>
 
                     </div>
                     <div
@@ -73,10 +74,10 @@
                             Read the Design Rationale
                         </p>
 
-                        <div class="mb-2 myProgress">
+                        <div class="mb-2 myProgress vote-result">
                             <div id="myBar2"></div>
                         </div>
-                        <h5 class="mb-5">{{ polls | get_count:3 }}</h5>
+                        <h5 class="mb-5 vote-result">{{ polls | get_count:3 }}</h5>
                     </div>
                     <div
                             class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center"
@@ -92,14 +93,14 @@
                             Read the Design Rationale
                         </p>
 
-                        <div class="mb-2 myProgress">
+                        <div class="mb-2 myProgress vote-result">
                             <div id="myBar3"></div>
                         </div>
-                        <h5 class="mb-5">{{ polls | get_count:4 }}</h5>
+                        <h5 class="mb-5 vote-result">{{ polls | get_count:4 }}</h5>
                     </div>
                 </div>
 
-                <div class="text-center">
+                <div class="text-center vote-result">
                     <p class="text-green">Total Vote count</p>
                     <h3>{{ vote_count }}</h3>
                 </div>
@@ -478,7 +479,16 @@
 
         function checkLoginState() {
             FB.getLoginStatus(function (response) {
-                console.log(response)
+                var tohide
+                if (response.authResponse) {
+                    tohide = document.querySelectorAll(".voting-btn");
+                    document.getElementById('vote-form').classList.add('d-none')
+                } else {
+                    tohide = document.querySelectorAll(".vote-result");
+                }
+                tohide.forEach(el => {
+                    el.classList.add('d-none')
+                })
             });
         }
 
