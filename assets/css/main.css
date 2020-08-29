@@ -1453,7 +1453,8 @@ textarea {
 }
 
 .coa{
-  width: 180px;
+  width: 150px;
+  margin-top: 30px;
   margin-bottom: 30px;
 }
 
@@ -1532,6 +1533,10 @@ textarea {
   }
   .mobile{
     display: inline-block;
+  }
+
+  #hero-area{
+    padding-bottom:200px !important ;
   }
 }
 
