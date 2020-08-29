@@ -139,5 +139,5 @@ STATICFILES_DIRS = (
 )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-if IS_PRODUCTION:
-    django_heroku.settings(locals())
+#if IS_PRODUCTION:
+#    django_heroku.settings(locals())
