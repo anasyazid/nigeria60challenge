@@ -36,7 +36,7 @@ class EntrySubmission(View):
                 'been received, and if shortlisted, you would be contacted for further directiton.',
                 'amustapha@hooli.ng',
                 [person.email],
-                fail_silently=False,
+                fail_silently=True,
             )
 
             return render(request, 'entrysuccess.html', {'message': 'Your entry has been successfully submitted.'})
