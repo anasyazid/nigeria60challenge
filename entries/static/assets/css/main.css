@@ -1545,6 +1545,10 @@ textarea {
   .navbar-expand-md .navbar-nav .nav-item {
     padding-left: 25px;
   }
+  .hero-img{
+    padding-bottom: 100px;
+    margin-right: 60px;
+  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 992px) {
@@ -2080,4 +2084,8 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
   position: absolute;
   right: 13px;
   top: 30% !important;
+}
+
+.check-label{
+  padding-top: 9px;
 }
