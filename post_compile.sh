@@ -4,4 +4,5 @@
 # https://discussion.heroku.com/t/django-automaticlly-run-syncdb-and-migrations-after-heroku-deploy-with-a-buildpack-or-otherwise/466/7
 
 echo "=> Performing database migrations..."
+python manage.py makemigrattions
 python manage.py migrate
