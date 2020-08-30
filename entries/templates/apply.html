@@ -46,24 +46,24 @@
                                 <p class="text-green">Are you applying as a team ?</p>
                                 <label class="radio-container">
                                     <p class="check-label">Yes</p>
-                                    <input type="radio" checked="checked" class="is-team" name="team" value="yes"/>
+                                    <input type="radio" class="is-team" name="team" value="yes"/>
                                     <span class="checkmark"></span>
                                 </label>
 
                                 <label class="radio-container">
                                     <p class="check-label">No</p>
-                                    <input type="radio" name="team" class="is-team" value="no"/>
+                                    <input type="radio" checked="checked" name="team" class="is-team" value="no"/>
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
 
-                            <div class="mt-4 team-wrapper">
+                            <div class="mt-4 team-wrapper hidden">
                                 <p class="text-green">Kindly provide the name of other members</p>
                                 <div>
                                     <div class="row" id="member">
                                         <div class="mt-4 col-sm-6">
                                             <input placeholder="Member Name" type="text" name="member[]" required=""
-                                                   class="members input-0"/>
+                                                   class="members"/>
                                         </div>
                                     </div>
                                     <div class="pointer add mt-3">
@@ -103,8 +103,8 @@
                                             <small class="text-danger">{{ person_form.state_of_origin.errors }}</small>
                                         </div>
                                         <div class="mt-4 col-sm-6">
-                                            <input placeholder="Date of Birth*" data-provide="datepicker" type="text"
-                                                   required="" class="input-0" name="dob"/>
+                                            <input placeholder="Date of Birth*" type="text"
+                                                   required="" class="input-0 datepicker" name="dob"/>
                                             <small class="text-danger">{{ person_form.dob.errors }}</small>
                                         </div>
                                         <div class="mt-4 col-sm-12">
@@ -207,7 +207,7 @@
                                 <div><small class="text-danger"></small>{{ entry_form.pic_2.errors }}</small></div>
                                 <div><small class="text-danger"></small>{{ entry_form.pic_3.errors }}</small></div>
                             </div>
-
+<!-- 
                             <div class="mt-4">
                                 <div>
                                     <label class="check-container">
@@ -222,7 +222,7 @@
                                         <span class="checkmark-2"></span>
                                     </label>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="mt-4 slogan hidden">
                                 <p class="text-green">Slogan - criteria & guide</p>
@@ -273,6 +273,12 @@
             $("#states").html(`<option value="">State of Origin*</option>` + states.map(state => {
                 return `<option value="${state}">${state}</option>`;
             }).join(''));
+
+            
+            //Date Picker
+            $('.datepicker').datepicker({
+                format: 'dd/mm/yyyy',
+            });
 
 
             // SmartWizard initialize
