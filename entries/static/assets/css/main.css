@@ -604,7 +604,7 @@ hr {
 }
 
 .navbar-expand-md .navbar-nav .nav-item {
-  padding-left: 25px;
+  padding-right: 25px;
 }
 
 .navbar-expand-md .navbar-nav .nav-link {
@@ -1541,6 +1541,9 @@ textarea {
 
   #hero-area{
     padding-bottom:200px !important ;
+  }
+  .navbar-expand-md .navbar-nav .nav-item {
+    padding-left: 25px;
   }
 }
 
