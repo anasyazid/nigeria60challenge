@@ -9,11 +9,9 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
+import logging
 import os
 
-import dj_database_url
-import django_heroku
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -30,8 +28,7 @@ SECRET_KEY = os.getenv('django_secret', "v411vmi5b*8jud3a!4$fme*31p@kk@9s&t^v1nt
 DEBUG = True
 IS_PRODUCTION = int(os.getenv('in_production', 1))
 
-
-ALLOWED_HOSTS = ["*", "naija60.herokuapp.com"]
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -80,12 +77,13 @@ WSGI_APPLICATION = 'nigeria60challenge.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-print(IS_PRODUCTION)
 if IS_PRODUCTION:
-    print("In production")
+    import dj_database_url
+
+    logging.info("Running in production")
     DATABASES = {'default': dj_database_url.config()}
 else:
-    print("Not inn production")
+    logging.info("Running in local environment")
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -139,5 +137,6 @@ STATICFILES_DIRS = (
 )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-#if IS_PRODUCTION:
-#    django_heroku.settings(locals())
+EMAIL_BACKEND = 'django_amazon_ses.EmailBackend'
+AWS_ACCESS_KEY_ID = os.getenv('aws_key')
+AWS_SECRET_ACCESS_KEY = os.getenv('aws_secret')

@@ -5,7 +5,10 @@ register = template.Library()
 
 @register.simple_tag
 def percentage(polls, id, total_count):
-    return (get_count(polls, id) / total_count) * 100
+    try:
+        return (get_count(polls, id) / total_count) * 100
+    except ZeroDivisionError:
+        return 0
 
 
 @register.filter

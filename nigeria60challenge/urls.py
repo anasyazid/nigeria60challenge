@@ -23,5 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='index.html')),
     path('entries/', include('entries.urls')),
-    path('polls/', include('votes.urls'))
+    path('polls/', include('votes.urls')),
+    path('privacy/', TemplateView.as_view(template_name='privacy.html'), name='privacy'),
+    path('terms/', TemplateView.as_view(template_name='terms.html'), name='terms'),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+{% block header %}
+{% endblock %}
+{% block body %}
+  <div id="hero-area" class="hero-area-bg">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">
+                Entry submitted
+                </h2>
+                <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
+            </div>
+
+            <div>
+                <div class="mt-4">
+                    <div class="alert alert-success">
+                        <b>{{message}}</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
