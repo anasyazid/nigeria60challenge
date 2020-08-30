@@ -24,7 +24,7 @@
                     >
                         <img class="vote-logo" src="{% static "assets/img/1.png" %}" alt=""/>
 
-                        <label for="design-1" href="#" class="btn voting-btn btn-border mt-4 mb-2">Vote this
+                        <label for="design-1" href="#" class="btn voting-btn btn-border-vote mt-4 mb-2">Vote this
                             logo</label>
                         <p
                                 class="mb-2 pointer text-underline"
@@ -43,7 +43,7 @@
                             class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center"
                     >
                         <img class="vote-logo" src="{% static "assets/img/2.png" %}" alt=""/>
-                        <label for="design-2" href="#" class="btn voting-btn btn-border mt-4 mb-2">Vote this
+                        <label for="design-2" href="#" class="btn voting-btn btn-border-vote mt-4 mb-2">Vote this
                             logo</label>
                         <p
                                 class="mb-2 pointer text-underline"
@@ -64,7 +64,7 @@
                     >
                         <img class="vote-logo" src="{% static "assets/img/3.png" %}" alt=""/>
 
-                        <label for="design-3" href="#" class="btn voting-btn btn-border mt-4 mb-2">Vote this
+                        <label for="design-3" href="#" class="btn voting-btn btn-border-vote mt-4 mb-2">Vote this
                             logo</label>
                         <p
                                 class="mb-2 pointer text-underline"
@@ -83,7 +83,7 @@
                             class="col-12 col-sm-12 col-md-6 col-lg-3 d-flex flex-column align-items-center"
                     >
                         <img class="vote-logo" src="{% static "assets/img/4.png" %}" alt=""/>
-                        <label for="design-4" href="#" class="btn voting-btn btn-border mt-4 mb-2">Vote this
+                        <label for="design-4" href="#" class="btn voting-btn btn-border-vote mt-4 mb-2">Vote this
                             logo</label>
                         <p
                                 class="mb-2 pointer text-underline"
@@ -481,25 +481,25 @@
             {% endif %}
         }
 
-        function hideDynamic(response) {
-            var tohide
-            if (response.authResponse) {
-                console.log("Hide votting controls")
-                tohide = document.querySelectorAll(".voting-btn");
-                document.getElementById('vote-form').classList.add('d-none')
-            } else {
-                console.log("Hide voting resul")
-                tohide = document.querySelectorAll(".vote-result");
-            }
-            tohide.forEach(el => {
-                el.classList.add('d-none')
+        document.querySelectorAll(".vote-result").tohide.forEach(el => {
+            el.classList.add('d-none')
+        })
+
+        {% if ':8000' in request.META.HTTP_HOST or '-dev' in request.META.HTTP_HOST  %}
+            document.querySelectorAll(".vote-result").tohide.forEach(el => {
+                el.classList.remove('d-none')
             })
-        }
+        {% endif %}
+
+
 
         function checkLoginState() {
             console.log("Checking login state")
             FB.getLoginStatus(function (response) {
                 var tohide
+                document.querySelectorAll(".vote-result").tohide.forEach(el => {
+                    el.classList.remove('d-none')
+                })
                 if (response.authResponse) {
                     console.log("Hide votting controls")
                     tohide = document.querySelectorAll(".voting-btn");
@@ -514,7 +514,6 @@
             });
         }
 
-        hideDynamic({});
 
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
@@ -609,11 +608,11 @@
         voting_btns.forEach(btn => {
             btn.addEventListener('click', function () {
                 voting_btns.forEach(sub_btn => {
-                    sub_btn.classList.remove('btn-common')
-                    sub_btn.classList.add('btn-border')
+                    sub_btn.classList.remove('btn-common-vote')
+                    sub_btn.classList.add('btn-border-vote')
                 })
-                btn.classList.add('btn-common')
-                btn.classList.remove('btn-border')
+                btn.classList.add('btn-common-vote')
+                btn.classList.remove('btn-border-vote')
 
             })
         })
