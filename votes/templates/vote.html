@@ -609,10 +609,10 @@
         voting_btns.forEach(btn => {
             btn.addEventListener('click', function () {
                 voting_btns.forEach(sub_btn => {
-                    sub_btn.classList.remove('btn-common')
+                    sub_btn.classList.remove('btn-common-vote')
                     sub_btn.classList.add('btn-border-vote')
                 })
-                btn.classList.add('btn-common')
+                btn.classList.add('btn-common-vote')
                 btn.classList.remove('btn-border-vote')
 
             })

@@ -192,16 +192,12 @@ a:not([href]):not([tabindex]) {
   text-transform: uppercase;
 }
 
-.btn-border-vote:hover {
-  color: #005835;
+.btn-common-vote {
+  border-radius: 30px;
+  text-transform: uppercase;
+  color: #fff;
   border-color: #005835;
-  background-color: #0058353a;
-}
-
-.btn-border-vote:focus {
-  color: #005835;
-  border-color: #005835;
-  background-color: #0058353a;
+  background-color: #005835;
 }
 
 .btn-lg {
