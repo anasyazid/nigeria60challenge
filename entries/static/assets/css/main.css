@@ -2020,7 +2020,10 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
   padding: 0rem !important;
   margin-top: 3.3rem;
 }
-
+.sw-theme-default .toolbar {
+  display: flex;
+  justify-content: space-between;
+}
 .sw-theme-default .toolbar>.btn {
   padding: 10px 30px !important;
   cursor: pointer !important;
@@ -2036,6 +2039,12 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
   position: relative;
   z-index: 1;
   text-transform: uppercase !important;
+}
+
+.sw-theme-default .toolbar>.btn.sw-btn-prev {
+  color: #005835 !important;
+  border: 2px solid #005835 !important;
+  background-color: #fff !important;
 }
 
 .poetry.hidden,
