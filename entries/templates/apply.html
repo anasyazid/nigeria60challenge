@@ -8,14 +8,6 @@
             <form method="POST" id="entries-form" enctype="multipart/form-data">
                 {% csrf_token %}
 
-                <!--{% for key, value in entry_form.errors.items %}
-                    <span class="text-danger">{{value}}</span>
-                {% endfor %}
-
-                {% for key, value in person_form.errors.items %}
-                    <span class="text-danger">{{value}}</span>
-                {% endfor %}-->
-
                 {% if person_form.errors.items or entry_form.errors.items  %}
                     <div class="alert alert-danger">
                         <small>Form data is invalid. Please check the form, correct and re-submit</small>
@@ -106,8 +98,8 @@
                                             <small class="text-danger">{{person_form.state_of_origin.errors}}</small>
                                         </div>
                                         <div class="mt-4 col-sm-6">
-                                            <input placeholder="Age*" type="number" required="" class="input-0" name="age"/>
-                                            <small class="text-danger">{{person_form.age.errors}}</small>
+                                            <input placeholder="Date of Birth*" data-provide="datepicker" type="text" required="" class="input-0" name="dob"/>
+                                            <small class="text-danger">{{person_form.dob.errors}}</small>
                                         </div>
                                         <div class="mt-4 col-sm-12">
                                             <input placeholder="Contact Address*" type="text" required="" class="input-0" name="contact_address"/>
@@ -130,12 +122,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!--<div class="mt-5 d-flex justify-content-center">
-                                    <div>
-                                        <a href="./apply2.html" class="btn btn-common">Next <i
-                                                class="lni-chevron-right ml-2 mt-1"></i></a>
-                                    </div>
-                                </div>-->
                             </div>
                         </div>
 
