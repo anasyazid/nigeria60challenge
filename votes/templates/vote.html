@@ -445,7 +445,11 @@
             });
 
             FB.AppEvents.logPageView();
-            checkLoginState()
+            {% if ':8000' in request.META.HTTP_HOST or '-dev' in request.META.HTTP_HOST  %}
+                window.alert("This is a development server. Facebook voting is mimicked and no actual request are made to facebook.")
+            {% else %}
+                checkLoginState()
+            {% endif %}
         };
 
         function customFBLogin() {
@@ -456,12 +460,12 @@
                 return window.alert("Please enter your full name and phone number")
             }
 
-            {% if ':8000' in request.META.HTTP_HOST %}
+            {% if ':8000' in request.META.HTTP_HOST or '-dev' in request.META.HTTP_HOST  %}
+                window.alert("This is a development server. Facebook voting is mimicked and no actual request are made to facebook.")
                 document.getElementById('facebook_id').value = "FB-id" + Date.now()
                 document.getElementById('facebook_token').value = "FBT" + Date.now()
                 document.getElementById('submit-form').click()
             {% else %}
-
                 FB.login(function (response) {
                     if (response.status === 'connected') {
                         console.log(response)
