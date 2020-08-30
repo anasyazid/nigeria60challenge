@@ -39,7 +39,7 @@ class EntrySubmission(View):
                 fail_silently=True,
             )
 
-            return render(request, 'entrysuccess.html', {'message': 'Your entry has been successfully submitted.'})
+            return redirect('/entries/entry-submitted')
         return render(request, 'apply.html', {'entry_form': entry_form, 'person_form': person_form})
 
 
