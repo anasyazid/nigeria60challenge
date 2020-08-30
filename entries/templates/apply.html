@@ -207,22 +207,6 @@
                                 <div><small class="text-danger"></small>{{ entry_form.pic_2.errors }}</small></div>
                                 <div><small class="text-danger"></small>{{ entry_form.pic_3.errors }}</small></div>
                             </div>
-<!-- 
-                            <div class="mt-4">
-                                <div>
-                                    <label class="check-container">
-                                        I consent to the use of my submissions by the Federal Republic
-                                        of Nigeria towards the celebration of Nigeria @60
-                                        <input
-                                                type="checkbox"
-                                                checked="checked"
-                                                name="team"
-                                                value="yes"
-                                        />
-                                        <span class="checkmark-2"></span>
-                                    </label>
-                                </div>
-                            </div> -->
 
                             <div class="mt-4 slogan hidden">
                                 <p class="text-green">Slogan - criteria & guide</p>
@@ -283,6 +267,26 @@
 
             // SmartWizard initialize
             $('#smartwizard').smartWizard();
+            let swbtnPrev = document.querySelector('.sw-btn-prev');
+            swbtnPrev.classList.remove('disabled');
+            let tabIndex = 0;
+
+
+            // Initialize the showStep event
+            $("#smartwizard").on("showStep", function(e, anchorObject, stepIndex, stepDirection) {
+                if(stepDirection === "backward" && stepIndex === 1) {
+                    tabIndex = stepIndex;
+                    swbtnPrev.classList.remove('disabled')
+                }
+            });
+
+            swbtnPrev.addEventListener('click', () => {
+                if(tabIndex === 1) {
+                    tabIndex -= 1;
+                }else{
+                    window.location = '/entries/guide'
+                }
+            })
 
             // Initialize the leaveStep event
             $("#smartwizard").on("leaveStep", function (e, anchorObject, currentStepIndex, nextStepIndex, stepDirection) {
