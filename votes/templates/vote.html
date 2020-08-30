@@ -481,11 +481,25 @@
             {% endif %}
         }
 
+        document.querySelectorAll(".vote-result").tohide.forEach(el => {
+            el.classList.add('d-none')
+        })
+
+        {% if ':8000' in request.META.HTTP_HOST or '-dev' in request.META.HTTP_HOST  %}
+            document.querySelectorAll(".vote-result").tohide.forEach(el => {
+                el.classList.remove('d-none')
+            })
+        {% endif %}
+
+
 
         function checkLoginState() {
             console.log("Checking login state")
             FB.getLoginStatus(function (response) {
                 var tohide
+                document.querySelectorAll(".vote-result").tohide.forEach(el => {
+                    el.classList.remove('d-none')
+                })
                 if (response.authResponse) {
                     console.log("Hide votting controls")
                     tohide = document.querySelectorAll(".voting-btn");
