@@ -8,7 +8,7 @@
             <form method="POST" id="entries-form" enctype="multipart/form-data">
                 {% csrf_token %}
 
-                {% if person_form.errors.items or entry_form.errors.items  %}
+                {% if person_form.errors.items or entry_form.errors.items %}
                     <div class="alert alert-danger">
                         <small>Form data is invalid. Please check the form, correct and re-submit</small>
                     </div>
@@ -16,21 +16,21 @@
 
                 <div id="smartwizard">
                     <ul class="nav">
-                       <li>
-                           <a class="nav-link" href="#step-1">
-                              Step 1
-                           </a>
-                       </li>
-                       <li>
-                           <a class="nav-link" href="#step-2">
-                              Step 2
-                           </a>
-                       </li>
-                       <li>
+                        <li>
+                            <a class="nav-link" href="#step-1">
+                                Step 1
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="#step-2">
+                                Step 2
+                            </a>
+                        </li>
+                        <li>
                             <a class="nav-link"></a>
                         </li>
                     </ul>
-                 
+
                     <div class="tab-content" id="tab-content">
                         <!-- Bio Data -->
                         <div id="step-1" class="tab-pane" role="tabpanel">
@@ -41,7 +41,7 @@
                                 <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
                             </div>
 
-                            
+
                             <div>
                                 <p class="text-green">Are you applying as a team ?</p>
                                 <label class="radio-container">
@@ -49,20 +49,21 @@
                                     <input type="radio" checked="checked" class="is-team" name="team" value="yes"/>
                                     <span class="checkmark"></span>
                                 </label>
-            
+
                                 <label class="radio-container">
                                     <p class="check-label">No</p>
                                     <input type="radio" name="team" class="is-team" value="no"/>
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
-                            
+
                             <div class="mt-4 team-wrapper">
                                 <p class="text-green">Kindly provide the name of other members</p>
                                 <div>
                                     <div class="row" id="member">
                                         <div class="mt-4 col-sm-6">
-                                            <input placeholder="Member Name" type="text" name="member[]" required="" class="members input-0"/>
+                                            <input placeholder="Member Name" type="text" name="member[]" required=""
+                                                   class="members input-0"/>
                                         </div>
                                     </div>
                                     <div class="pointer add mt-3">
@@ -76,34 +77,40 @@
                                 <div>
                                     <div class="row">
                                         <div class="mt-4 col-sm-6">
-                                            <input placeholder="Full Name*" name="fullname" type="text" required="" class="input-0"/>
-                                            <input type="hidden" name="team_members" id="team-members" >
-                                            <small class="text-danger">{{person_form.team_members.errors}}</small>
+                                            <input placeholder="Full Name*" name="fullname" type="text" required=""
+                                                   class="input-0"/>
+                                            <input type="hidden" name="team_members" id="team-members">
+                                            <small class="text-danger">{{ person_form.team_members.errors }}</small>
                                         </div>
                                         <div class="mt-4 col-sm-6">
-                                            <input placeholder="Phone Number*" name="phone_number" type="tel" required="" class="input-0"/>
-                                            <small class="text-danger">{{person_form.phone_number.errors}}</small>
+                                            <input placeholder="Phone Number*" name="phone_number" type="tel"
+                                                   required="" class="input-0"/>
+                                            <small class="text-danger">{{ person_form.phone_number.errors }}</small>
                                         </div>
                                         <div class="mt-4 col-sm-6">
-                                            <input placeholder="Email*" name="email" type="email" required="" class="input-0"/>
-                                            <small class="text-danger">{{person_form.email.errors}}</small>
+                                            <input placeholder="Email*" name="email" type="email" required=""
+                                                   class="input-0"/>
+                                            <small class="text-danger">{{ person_form.email.errors }}</small>
                                         </div>
                                         <div class="mt-4 col-sm-6">
                                             <div class="form-relative">
-                                                <select class="select-css pointer input-0" id="states" name="state_of_origin">
+                                                <select class="select-css pointer input-0" id="states"
+                                                        name="state_of_origin">
                                                     <option value="">State of Origin*</option>
                                                 </select>
                                                 <i class="lni-chevron-down drop-down"></i>
                                             </div>
-                                            <small class="text-danger">{{person_form.state_of_origin.errors}}</small>
+                                            <small class="text-danger">{{ person_form.state_of_origin.errors }}</small>
                                         </div>
                                         <div class="mt-4 col-sm-6">
-                                            <input placeholder="Date of Birth*" data-provide="datepicker" type="text" required="" class="input-0" name="dob"/>
-                                            <small class="text-danger">{{person_form.dob.errors}}</small>
+                                            <input placeholder="Date of Birth*" data-provide="datepicker" type="text"
+                                                   required="" class="input-0" name="dob"/>
+                                            <small class="text-danger">{{ person_form.dob.errors }}</small>
                                         </div>
                                         <div class="mt-4 col-sm-12">
-                                            <input placeholder="Contact Address*" type="text" required="" class="input-0" name="contact_address"/>
-                                            <small class="text-danger">{{person_form.contact_address.errors}}</small>
+                                            <input placeholder="Contact Address*" type="text" required=""
+                                                   class="input-0" name="contact_address"/>
+                                            <small class="text-danger">{{ person_form.contact_address.errors }}</small>
                                         </div>
                                         <div class="mt-4 col-sm-6">
                                             <div class="form-relative">
@@ -114,11 +121,12 @@
                                                 </select>
                                                 <i class="lni-chevron-down drop-down"></i>
                                             </div>
-                                            <small class="text-danger">{{person_form.id_type.errors}}</small>
+                                            <small class="text-danger">{{ person_form.id_type.errors }}</small>
                                         </div>
                                         <div class="mt-4 col-sm-6">
-                                            <input placeholder="ID Number*" type="text" required="" class="input-0" name="id_number"/>
-                                            <small class="text-danger">{{person_form.id_number.errors}}</small>
+                                            <input placeholder="ID Number*" type="text" required="" class="input-0"
+                                                   name="id_number"/>
+                                            <small class="text-danger">{{ person_form.id_number.errors }}</small>
                                         </div>
                                     </div>
                                 </div>
@@ -146,36 +154,38 @@
                                     </select>
                                     <i class="lni-chevron-down drop-down"></i>
                                 </div>
-                                <small class="text-danger">{{entry_form.category.errors}}</small>
+                                <small class="text-danger">{{ entry_form.category.errors }}</small>
                             </div>
-                            
+
                             <div class="mt-4 slogan hidden">
                                 <div class="mt-4">
-                                    <input placeholder="Enter slogan here*" name="slogan" type="text" required="" class="input-1" />
-                                    <small class="text-danger">{{entry_form.slogan.errors}}</small>
+                                    <input placeholder="Enter slogan here*" name="slogan" type="text" required=""
+                                           class="input-1"/>
+                                    <small class="text-danger">{{ entry_form.slogan.errors }}</small>
                                 </div>
                             </div>
-                
+
                             <div class="mt-4 poetry hidden">
                                 <div class="mt-4">
-                                    <input placeholder="Enter Poem*" name="poem" type="poem" required="" class="input-1" />
-                                    <small class="text-danger"></small>{{entry_form.poem.errors}}</small>
+                                    <input placeholder="Enter Poem*" name="poem" type="poem" required=""
+                                           class="input-1"/>
+                                    <small class="text-danger"></small>{{ entry_form.poem.errors }}</small>
                                 </div>
                             </div>
 
                             <div class="poetry hidden">
                                 <div class="mt-4">
                                     <input
-                                    placeholder="Enter Url to your video here*"
-                                    type="url"
-                                    required=""
-                                    name="poem_url"
-                                    class="input-1"
+                                            placeholder="Enter Url to your video here*"
+                                            type="url"
+                                            required=""
+                                            name="poem_url"
+                                            class="input-1"
                                     />
-                                    <small class="text-danger"></small>{{entry_form.poem_url.errors}}</small>
+                                    <small class="text-danger"></small>{{ entry_form.poem_url.errors }}</small>
                                 </div>
                             </div>
-                            
+
                             <div class="photo hidden">
                                 <div class="mt-4 photo hidden">
                                     <p class="text-green">
@@ -193,47 +203,48 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div><small class="text-danger"></small>{{entry_form.pic_1.errors}}</small></div>
-                                <div><small class="text-danger"></small>{{entry_form.pic_2.errors}}</small></div>
-                                <div><small class="text-danger"></small>{{entry_form.pic_3.errors}}</small></div>
+                                <div><small class="text-danger"></small>{{ entry_form.pic_1.errors }}</small></div>
+                                <div><small class="text-danger"></small>{{ entry_form.pic_2.errors }}</small></div>
+                                <div><small class="text-danger"></small>{{ entry_form.pic_3.errors }}</small></div>
                             </div>
-                
+
                             <div class="mt-4">
                                 <div>
                                     <label class="check-container">
-                                    I consent to the use of my submissions by the Federal Republic
-                                    of Nigeria towards the celebration of Nigeria @60
-                                    <input
-                                        type="checkbox"
-                                        checked="checked"
-                                        name="team"
-                                        value="yes"
-                                    />
-                                    <span class="checkmark-2"></span>
+                                        I consent to the use of my submissions by the Federal Republic
+                                        of Nigeria towards the celebration of Nigeria @60
+                                        <input
+                                                type="checkbox"
+                                                checked="checked"
+                                                name="team"
+                                                value="yes"
+                                        />
+                                        <span class="checkmark-2"></span>
                                     </label>
                                 </div>
                             </div>
-                
+
                             <div class="mt-4 slogan hidden">
                                 <p class="text-green">Slogan - criteria & guide</p>
                                 <p>
                                     1- The four word slogan challenge requires you to provide a four
                                     word slogan fitting the theme of the Nigeria @ 60 Challenge
-                                    “Beauty and Ecellence”<br />
+                                    “Beauty and Ecellence”<br/>
                                     2- The slogan will be used in any communication material throught
-                                    the year.<br />
-                                    3- The top three slogans will win a prize<br />
+                                    the year.<br/>
+                                    3- The top three slogans will win a prize<br/>
                                 </p>
                             </div>
 
                             <div class="mt-4 photo hidden">
                                 <p class="text-green">Photography - criteria & guide</p>
                                 <p>
-                                    1- The Photography challenge requires you to provide a custom photo fitting the theme of the Nigeria @ 60 Challenge
-                                    “Beauty and Excellence”<br />
+                                    1- The Photography challenge requires you to provide a custom photo fitting the
+                                    theme of the Nigeria @ 60 Challenge
+                                    “Beauty and Excellence”<br/>
                                     2- The photo will be used in any communication material throught
-                                    the year.<br />
-                                    3- The top three photos will win a prize<br />
+                                    the year.<br/>
+                                    3- The top three photos will win a prize<br/>
                                 </p>
                             </div>
                         </div>
@@ -263,39 +274,39 @@
                 return `<option value="${state}">${state}</option>`;
             }).join(''));
 
-            
+
             // SmartWizard initialize
             $('#smartwizard').smartWizard();
 
             // Initialize the leaveStep event
-            $("#smartwizard").on("leaveStep", function(e, anchorObject, currentStepIndex, nextStepIndex, stepDirection) {
+            $("#smartwizard").on("leaveStep", function (e, anchorObject, currentStepIndex, nextStepIndex, stepDirection) {
                 //Validate Entries Form
                 const elems = document.querySelectorAll(`.input-${currentStepIndex}`);
                 let errorCount = 0;
                 elems.forEach(elem => {
-                    if(!elem.value && elem.parentElement.parentElement.classList.contains("hidden") === false) {
+                    if (!elem.value && elem.parentElement.parentElement.classList.contains("hidden") === false) {
                         errorCount += 1;
                         elem.classList.add('invalid');
                     }
                 });
-                if(errorCount > 0 && stepDirection === "forward") return false;
-                
+                if (errorCount > 0 && stepDirection === "forward") return false;
+
                 //Submit Entries Form
-                if(nextStepIndex === 2) {
+                if (nextStepIndex === 2) {
                     //stringify team members
                     const teamMembers = document.querySelectorAll('.members.input-0');
                     const team = $("#team-members");
                     let str = '';
                     //loop through members
                     teamMembers.forEach(elem => {
-                        if(elem.value) str += `${elem.value}, `;
+                        if (elem.value) str += `${elem.value}, `;
                     })
                     team.val(str);
 
                     $("#entries-form").submit();
                 }
             });
-            
+
         });
     </script>
     <script>
