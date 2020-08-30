@@ -481,24 +481,29 @@
             {% endif %}
         }
 
+        function hideDynamic(response) {
+            var tohide
+            if (response.authResponse) {
+                console.log("Hide votting controls")
+                tohide = document.querySelectorAll(".voting-btn");
+                document.getElementById('vote-form').classList.add('d-none')
+            } else {
+                console.log("Hide voting resul")
+                tohide = document.querySelectorAll(".vote-result");
+            }
+            tohide.forEach(el => {
+                el.classList.add('d-none')
+            })
+        }
+
         function checkLoginState() {
             console.log("Checking login state")
             FB.getLoginStatus(function (response) {
-                var tohide
-                if (response.authResponse) {
-                    console.log("Hide votting controls")
-                    tohide = document.querySelectorAll(".voting-btn");
-                    document.getElementById('vote-form').classList.add('d-none')
-                } else {
-                    console.log("Hide voting resul")
-
-                    tohide = document.querySelectorAll(".vote-result");
-                }
-                tohide.forEach(el => {
-                    el.classList.add('d-none')
-                })
+                hideDynamic(response)
             });
         }
+
+        hideDynamic({})
 
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
