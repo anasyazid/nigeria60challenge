@@ -29,8 +29,8 @@
     <!-- Others-->
     <link rel="stylesheet" href="{% static "assets/css/nivo-lightbox.css" %}"/>
     <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet"
-          type="text/css"/>
+    <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" /> 
 </head>
 <body>
 <!-- Header Area wrapper Starts -->
@@ -538,8 +538,9 @@
 <script src="{% static "assets/js/timezz.js" %}"></script>
 <script src="{% static "assets/js/nivo-lightbox.js" %}"></script>
 <script src="{% static "assets/js/main.js" %}"></script>
-<script src="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/js/jquery.smartWizard.min.js"
-        type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/js/jquery.smartWizard.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
 {% block customjs %}
     <script>
         new TimezZ("#timer", {
