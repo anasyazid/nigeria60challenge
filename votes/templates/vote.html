@@ -485,9 +485,12 @@
             FB.getLoginStatus(function (response) {
                 var tohide
                 if (response.authResponse) {
+                    console.log('Hide voting form and controls')
+
                     tohide = document.querySelectorAll(".voting-btn");
                     document.getElementById('vote-form').classList.add('d-none')
                 } else {
+                    console.log('Hide vote result')
                     tohide = document.querySelectorAll(".vote-result");
                 }
                 tohide.forEach(el => {
