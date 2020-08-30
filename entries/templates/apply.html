@@ -103,8 +103,8 @@
                                             <small class="text-danger">{{ person_form.state_of_origin.errors }}</small>
                                         </div>
                                         <div class="mt-4 col-sm-6">
-                                            <input placeholder="Date of Birth*" data-provide="datepicker" type="text"
-                                                   required="" class="input-0" name="dob"/>
+                                            <input placeholder="Date of Birth*" type="text"
+                                                   required="" class="input-0 datepicker" name="dob"/>
                                             <small class="text-danger">{{ person_form.dob.errors }}</small>
                                         </div>
                                         <div class="mt-4 col-sm-12">
@@ -273,6 +273,12 @@
             $("#states").html(`<option value="">State of Origin*</option>` + states.map(state => {
                 return `<option value="${state}">${state}</option>`;
             }).join(''));
+
+            
+            //Date Picker
+            $('.datepicker').datepicker({
+                format: 'dd/mm/yyyy',
+            });
 
 
             // SmartWizard initialize
