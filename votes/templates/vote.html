@@ -482,15 +482,16 @@
         }
 
         function checkLoginState() {
+            console.log("Checking login state")
             FB.getLoginStatus(function (response) {
                 var tohide
                 if (response.authResponse) {
-                    console.log('Hide voting form and controls')
-
+                    console.log("Hide votting controls")
                     tohide = document.querySelectorAll(".voting-btn");
                     document.getElementById('vote-form').classList.add('d-none')
                 } else {
-                    console.log('Hide vote result')
+                    console.log("Hide voting resul")
+
                     tohide = document.querySelectorAll(".vote-result");
                 }
                 tohide.forEach(el => {
