@@ -79,7 +79,8 @@ WSGI_APPLICATION = 'nigeria60challenge.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 if IS_PRODUCTION:
     import dj_database_url
-    logging.info ("Running in production")
+
+    logging.info("Running in production")
     DATABASES = {'default': dj_database_url.config()}
 else:
     logging.info("Running in local environment")
@@ -136,3 +137,6 @@ STATICFILES_DIRS = (
 )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+EMAIL_BACKEND = 'django_amazon_ses.EmailBackend'
+AWS_ACCESS_KEY_ID = os.getenv('aws_key')
+AWS_SECRET_ACCESS_KEY = os.getenv('aws_secret')
